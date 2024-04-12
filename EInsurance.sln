@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EInsurance.Server", "EInsurance.Server\EInsurance.Server.csproj", "{FE5745BE-31F8-4221-8E27-4421AE0183FB}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "einsurance.client", "einsurance.client\einsurance.client.esproj", "{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE5745BE-31F8-4221-8E27-4421AE0183FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5745BE-31F8-4221-8E27-4421AE0183FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5745BE-31F8-4221-8E27-4421AE0183FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5745BE-31F8-4221-8E27-4421AE0183FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBC56A3-1141-4101-8CEC-BE9044BBBA9D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7B1AB4D-E71B-42EE-BF57-78F9387AA9FB}
+	EndGlobalSection
+EndGlobal
