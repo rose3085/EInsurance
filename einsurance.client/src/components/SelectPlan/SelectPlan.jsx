@@ -15,7 +15,7 @@ function SelectPlan() {
                         <p class="lg:w-30 mx-auto leading-normal text-lg tracking-tight font-mono font-medium ">Select Type of Insurance you want</p>
                     </div>
                     <div class="flex flex-wrap -m-4">
-                        <div class="lg:w-64 sm:w-1/2  p-2">
+                        <div class="lg:w-64 sm:w-1/2  p-2 cursor-pointer">
                             <div class="flex relative">
                                 <div class="px-4 py-5 relative z-10 w-full border-2 rounded-md  bg-white hover:border-[#0065ff]">
                                     <img src={LifeInsurance} alt="life-insurance icon" className='h-20 w-32' />
@@ -24,7 +24,7 @@ function SelectPlan() {
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-64 sm:w-1/2 p-2">
+                        <div class="lg:w-64 sm:w-1/2 p-2 cursor-pointer">
                             <div class="flex relative">
                                 <div class="px-4 py-5 relative z-10 w-full border-2 rounded-md  bg-white hover:border-[#0065ff]">
                                     <img src={HomeInsurance} alt="Non-life-insurance icon" className='h-20 w-32' />
@@ -33,7 +33,7 @@ function SelectPlan() {
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-60 sm:w-1/2 p-2">
+                        <div class="lg:w-60 sm:w-1/2 p-2 cursor-pointer">
                             <div class="flex relative">
                                 <div class="px-4 py-5 relative z-10 w-full border-2 rounded-md  bg-white hover:border-[#0065ff]">
                                     <img src={VehicleInsurance} alt="Vehicle insurance icon" className='h-20 w-32' />
@@ -42,7 +42,7 @@ function SelectPlan() {
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-64 sm:w-1/2 p-2">
+                        <div class="lg:w-64 sm:w-1/2 p-2 cursor-pointer">
                             <div class="flex relative">
                                 <div class="px-4 py-5 relative z-10 w-full border-2 rounded-md  bg-white hover:border-[#0065ff]">
                                     <img src={HealthInsurance} alt="Health insurance icon" className='h-20 w-32' />
@@ -51,7 +51,7 @@ function SelectPlan() {
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-64 sm:w-1/2 p-2">
+                        <div class="lg:w-64 sm:w-1/2 p-2 cursor-pointer">
                             <div class="flex relative">
                                 <div class="px-4 py-5 relative z-10 w-full border-2 rounded-md  bg-white hover:border-[#0065ff]">
                                     <img src={SaveMoney} alt=" high return icon" className='h-20 w-32' />

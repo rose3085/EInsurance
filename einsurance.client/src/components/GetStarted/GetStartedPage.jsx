@@ -1,6 +1,9 @@
 import React from 'react'
 import SelectPlan from '../SelectPlan/SelectPlan'
 import Ads from '../Ads/Ads'
+import Advantages from '../Advantages/Advantages'
+import Visit from '../Visit/Visit'
+import CheckOut from '../CheckOut/CheckOut'
 
 export default function GetStartedPage() {
   return (
@@ -24,7 +27,11 @@ export default function GetStartedPage() {
       </div>
 
       <SelectPlan/>
+      <Advantages/>
       <Ads/>
+      <Visit/>
+      <CheckOut/>
+      
 
     </>
   )
