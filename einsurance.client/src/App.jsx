@@ -1,49 +1,38 @@
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUpPage/SignUp';
+import EnterEmail from './components/SignUpPage/EnterEmail';
+import EnterPassword from './components/SignUpPage/EnterPassword';
+import EnterPhoneNumber from './components/SignUpPage/EnterPhoneNumber';
+// import PolicyResult from './Components/GetPolicy/PolicyResult';
+// import FilterResult from './Components/GetPolicy/FilterResult';
+//import Summary from './components/FilterPolicy/Summary';
+import FilterResult from './components/FilterPolicy/FilterResult';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
+ 
     return (
-        <div>
-            <h1 id="tabelLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+        <div className='App'>
+            <Router>
+                    <Link to="Login"></Link>
+            <Routes>
+                  <Route path='/' element={<Login/>}></Route>
+                  <Route path='/SignUp' element={<SignUp/>}></Route>
+                 
+                  <Route path='/EnterEmail' element={<EnterEmail/>}></Route>
+
+                  <Route path='/EnterPassword' element={<EnterPassword/>}></Route>
+                  <Route path='/EnterPhoneNumber' element={<EnterPhoneNumber/>}></Route>
+                  <Route path='/FilterResult' element={<FilterResult/>}></Route>
+                  {/* <Route path='/PolicyResult' element={<PolicyResult/>}></Route>
+                  <Route path='/FilterResult' element={<FilterResult/>}></Route> */}
+            </Routes>
+            </Router>
         </div>
     );
     
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
+
 }
 
 export default App;
