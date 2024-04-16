@@ -73,6 +73,7 @@ namespace web_scrapper.Controllers
 
             var policies = _context
                 .policyTerms.Include(x => x.PolicyDetails)
+                .Include(x => x.PolicyDetails.CompanyName)
                 .Where(x =>
                     x.PolicyTerm == filters.Terms
                     & x.PolicyDetails.MaturityBenefits == null
@@ -81,7 +82,6 @@ namespace web_scrapper.Controllers
                         x.PolicyDetails.MaxCover >= filters.CoverAmount
                         || x.PolicyDetails.MaxCover == null
                     )
-                    // & x.PolicyDetails.PolicyTerm.Any(x => x.PolicyDetails.PolicyTerm == filters.Terms)
                     & (x.PolicyDetails.ExpiryAge > filters.Age || x.PolicyDetails.ExpiryAge == null)
                     & x.PolicyDetails.MinEntryAge <= filters.Age
                     & x.PolicyDetails.MaxEntryAge >= filters.Age

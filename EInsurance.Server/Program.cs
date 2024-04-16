@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,18 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<EInsurance.Server.Data.ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString)
 );
+
+var corsOrigins = builder.Configuration.GetValue<string>("App:CorsOrigins")?.Split(',');
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "ReactPolicy",
+        builder =>
+        {
+            builder.WithOrigins(corsOrigins).AllowAnyHeader().AllowAnyMethod();
+        }
+    );
+});
 
 var app = builder.Build();
 
