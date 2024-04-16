@@ -5,11 +5,14 @@ import './index.css';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom'
 import Layout from './Layout.jsx';
 import GetStartedPage from './components/GetStarted/GetStartedPage.jsx';
+import Questiondetails from './components/QuestionDetails/Questiondetails.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<GetStartedPage/>}></Route>
+      <Route path='Questiondetails' element={<Questiondetails/>}></Route>
+
       
     </Route>
 

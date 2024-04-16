@@ -4,6 +4,7 @@ import Ads from '../Ads/Ads'
 import Advantages from '../Advantages/Advantages'
 import Visit from '../Visit/Visit'
 import CheckOut from '../CheckOut/CheckOut'
+import { Link } from 'react-router-dom'
 
 export default function GetStartedPage() {
   return (
@@ -15,10 +16,12 @@ export default function GetStartedPage() {
               <br class="hidden lg:inline-block" />
             </h1>
             <p class="mb-8 leading-normal text-xl">Our platform allows you to compare various life insurance policies from top-rated companies effortlessly. Let's get started and find the perfect plan to protect your loved ones' future with <b className='text-[#0065ff]'> EInsurance</b>.</p>
-            <div class="flex justify-center">
-              <button class="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Get Started</button>
+            <Link to='/Questiondetails'>
+              <div class="flex justify-center">
+                <button class="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Get Started</button>
 
-            </div>
+              </div>
+            </Link>
           </div>
           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-40">
             <img class="object-cover object-center rounded" alt="hero" src="https://images.pexels.com/photos/7688374/pexels-photo-7688374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
@@ -26,12 +29,12 @@ export default function GetStartedPage() {
         </div>
       </div>
 
-      <SelectPlan/>
-      <Advantages/>
-      <Ads/>
-      <Visit/>
-      <CheckOut/>
-      
+      <SelectPlan />
+      <Advantages />
+      <Ads />
+      <Visit />
+      <CheckOut />
+
 
     </>
   )
