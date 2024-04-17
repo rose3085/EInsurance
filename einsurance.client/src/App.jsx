@@ -9,7 +9,7 @@ import EnterPhoneNumber from './components/SignUpPage/EnterPhoneNumber';
 // import FilterResult from './Components/GetPolicy/FilterResult';
 //import Summary from './components/FilterPolicy/Summary';
 import FilterResult from './components/FilterPolicy/FilterResult';
-import ViewDetails from './components/ViewDetails/ViewDetails';
+import ViewDetail from './components/FilterPolicy/ViewDetail';
 
 function App() {
  
@@ -26,7 +26,7 @@ function App() {
                   <Route path='/EnterPassword' element={<EnterPassword/>}></Route>
                   <Route path='/EnterPhoneNumber' element={<EnterPhoneNumber/>}></Route>
                   <Route path='/FilterResult' element={<FilterResult/>}></Route>
-                  <Route path='/ViewDetails' element={<ViewDetails/>}></Route>
+                  <Route path='/ViewDetail' element={<ViewDetail/>}></Route>
 
                   {/* <Route path='/PolicyResult' element={<PolicyResult/>}></Route>
                   <Route path='/FilterResult' element={<FilterResult/>}></Route> */}
