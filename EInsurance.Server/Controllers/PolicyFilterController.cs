@@ -26,7 +26,7 @@ namespace web_scrapper.Controllers
         {
             if (filters.MaturityBenefits == true)
             {
-                var policiesList = _context
+             var policiesList = _context
                     .policyTerms.Include(x => x.PolicyDetails)
                     .Include(x => x.PolicyDetails.CompanyName)
                     .Where(x =>

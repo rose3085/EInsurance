@@ -1,9 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NepaliDatePicker } from "nepali-datepicker-reactjs"
 import "nepali-datepicker-reactjs/dist/index.css"
 
 function Questiondetails() {
-    const [dateofbirth, setDateOfBirth] = useState ("")
+    const [dateofbirth, setDateOfBirth] = useState("")
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+  
+        const fetchData = async (event) => {
+            event.preventDefault();
+          try {
+            setLoading(true);
+            const response = await fetch('https://localhost:7056/policy/filter');
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const jsonData = await response.json();
+            setData(jsonData);
+          } catch (error) {
+            setError(error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+      
     return (
         <>
             <div className='flex justify-center items-center '>
@@ -89,7 +112,7 @@ function Questiondetails() {
 
                         <div class="m-2 flex items-center justify-end gap-x-6">
                            
-                        <button type='submit' class="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Submit</button>
+                        <button type='submit' onClick={fetchData} class="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Submit</button>
                         </div>
                     </form>
 
