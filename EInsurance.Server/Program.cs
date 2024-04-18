@@ -22,7 +22,11 @@ builder.Services.AddCors(options =>
         "ReactPolicy",
         builder =>
         {
-            builder.WithOrigins(corsOrigins).AllowAnyHeader().AllowAnyMethod();
+            builder
+                .WithOrigins("https://localhost:5173/")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowAnyOrigin();
         }
     );
 });
@@ -40,6 +44,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("ReactPolicy");
 
 app.UseAuthorization();
 
