@@ -151,4 +151,4 @@ function Questiondetails() {
     )
 }
 
-export default Questiondetails
+export default Questiondetails;
