@@ -6,14 +6,14 @@ function Questiondetails() {
     const [dateofbirth, setDateOfBirth] = useState("");
     const [policyType, setPolicyType] = useState("Investment Plan");
     const [age, setAge] = useState(24);
-    const [term, setTerm] = useState(2);
+    const [terms, setTerms] = useState(2);
     const [paymentMode, setPaymentMode] = useState("");
     const [coverAmount, setCoverAmount] = useState(5000);
     const [maturityBenefits, setMaturityBenefits] = useState("true");
 
     const requestBody = {
         policyType,
-        term,
+        terms,
         age,
         coverAmount,
         paymentMode,
@@ -22,21 +22,43 @@ function Questiondetails() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch(`https://localhost:44361/policy/filter`, {
-            method: 'POST',
+        const apiUrl = `https://localhost:44361/policy/filter`;
+        fetch(apiUrl, {
+            method: 'POST', // Use the appropriate HTTP method
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody) // Convert object to JSON string
+            body: JSON.stringify({ requestBody }),  
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log("ok", data); // Log API response
-                // You can update the UI based on the response here
+            .then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+
+                    console.log("ok");
+
+
+                    return response.json();
+
+
+
+                } else {
+
+                    console.log("error", response.status);
+               
+                    // Handle errors here
+                    //remain in the same page and show the error message
+                    throw new Error('Failed to call fetch api');
+                }
             })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle error if any
+
+            
+            .catch((error) => {
+                // Handle errors here
+                console.error(error);
+                if (error instanceof TypeError && error.message === 'Failed to fetch') {
+                    console.error('Network error:', error);
+                } else {
+                    console.error('Other error:', error);
+                }
             });
     }
     return (
@@ -51,12 +73,16 @@ function Questiondetails() {
                             <option value="Investment">Investment Plan</option>
                             <option value="Child">Child Plan</option>
                             <option value="High">High return Plan</option>
-                            <option value="Life Insurance">Life Insurance Plan</option>
+                            <option value="Life Insurance">lifeinsurance</option>
                             <option value="Health">Health Insurance Plan</option>
                             <option value="Vehicle">Vehicle Insurance Plan</option>
                         </select>
+                        {/*<div className="mt-2">*/}
+                        {/*    <input type="text" name="term" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset*/}
+                        {/*                     ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setPolicyType(e.target.value) }} />*/}
+                        {/*</div>*/}
                     </div>
-                    <form>
+                    
                         <div className="px-3 py-6">
 
 
@@ -84,20 +110,32 @@ function Questiondetails() {
                                         </div>
                                     </div>
 
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="Sum Assured" className="block text-base font-medium leading-3 text-gray-900 font-sans">Sum Assured</label>
-                                        <div className="mt-2">
-                                            <input type="number" name="sum-assured" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff]
-                                                 sm:text-sm sm:leading-6"  onChange={(e) => { setCoverAmount(e.target.value) }} />
-                                        </div>
-                                    </div>
+                                    
 
+                                   
+
+                                   
                                     <div className="sm:col-span-3">
-                                        <label htmlFor="Term" className="block text-base font-medium leading-3 text-gray-900 font-sans">Term</label>
+                                        <label htmlFor="Age" className="block text-base font-medium leading-3 text-gray-900 font-sans">Age</label>
                                         <div className="mt-2">
                                             <input type="number" name="term" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setTerm(e.target.value) }} />
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setAge(e.target.value) }} />
+                                        </div>
+                                    </div>
+                                    <div className="sm:col-span-3">
+                                        <label htmlFor="Term" className="block text-base font-medium leading-3 text-gray-900 font-sans">Terms</label>
+                                        <div className="mt-2">
+                                            <input type="number" name="term" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setTerms(e.target.value) }} />
+                                        </div>
+                                    </div>
+                                    <div className="sm:col-span-3">
+                                        <label htmlFor="Age" className="block text-base font-medium leading-3 text-gray-900 font-sans">maturityBenefits</label>
+                                        <div className="mt-2">
+                                            <input type="checkbox"
+                                            name="maturityBenefits"
+                                            checked={maturityBenefits} className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setMaturityBenefits(e.target.checked) }} />
                                         </div>
                                     </div>
 
@@ -113,20 +151,13 @@ function Questiondetails() {
                                             </select>
                                         </div>
                                     </div>
+
                                     <div className="sm:col-span-3">
-                                        <label htmlFor="Age" className="block text-base font-medium leading-3 text-gray-900 font-sans">Age</label>
+                                        <label htmlFor="Sum Assured" className="block text-base font-medium leading-3 text-gray-900 font-sans">Sum Assured</label>
                                         <div className="mt-2">
-                                            <input type="number" name="term" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setAge(e.target.value) }} />
-                                        </div>
-                                    </div>
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="Age" className="block text-base font-medium leading-3 text-gray-900 font-sans">maturityBenefits</label>
-                                        <div className="mt-2">
-                                            <input type="checkbox"
-                                            name="maturityBenefits"
-                                            checked={maturityBenefits} className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setMaturityBenefits(e.target.checked) }} />
+                                            <input type="number" name="sum-assured" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff]
+                                                 sm:text-sm sm:leading-6"  onChange={(e) => { setCoverAmount(e.target.value) }} />
                                         </div>
                                     </div>
 
@@ -141,9 +172,9 @@ function Questiondetails() {
 
                         <div className="m-2 flex items-center justify-end gap-x-6">
 
-                            <button type='submit' onClick={handleSubmit} className="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Submit</button>
+                            <button  onClick={handleSubmit} className="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Submit</button>
                         </div>
-                    </form>
+                  
 
                 </div>
             </div>
