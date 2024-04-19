@@ -68,7 +68,7 @@ const ViewDetail = () =>
 
       return (
         <section className="viewDetailsMain">
-            <div className="viewDetailsHeader">
+            <div className="viewDetailsComponents"><div className="viewDetailsHeader">
             <div className="cancelButtons">
                     <div className="cancel" onClick={handleCancelButton}><img src={cancel}  alt=""       height='25px' id='checked'/> </div>
                     </div>
@@ -173,7 +173,7 @@ const ViewDetail = () =>
                 </div>
               </div>
               </div>
-
+              </div>
 
              
         </section>

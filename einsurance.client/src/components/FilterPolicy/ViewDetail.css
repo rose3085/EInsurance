@@ -1,23 +1,29 @@
 .viewDetailsMain
 {
+    
+    width:1000;
+
+   
+}
+
+.viewDetailsComponents
+{
+    margin-top:2rem;
     border:2px solid ;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     border-color:var(--background-color);
-    height:680px; width:900px;
-    margin-left:13rem;
+    height:680px; width:935px;
+    margin-left:19rem;
     margin-top:1rem;
     margin-bottom:2rem;
-    
-   
 }
 .insuranceIcon
 {
     width:35px;
 }
 .viewDetailsHeader
-{
-    background-color: #008a8a;
+{    background-color: #008a8a;
     height:80px;
     margin-top:-2.1rem; 
     border-bottom: 2px solid rgb(152, 191, 229);
@@ -27,11 +33,8 @@
 }
 .cancelButtons
 {
-    margin-left:43.8rem;
+    margin-left:55.8rem;
     width:25px;
-   
-  
-     
 }
 
 .cancel
@@ -57,7 +60,7 @@ text-align: center;}
     background-color: aliceblue;
     overflow-x: hidden;
     overflow-y: scroll;
-    height:600px;
+    height:590px;
     width:930px;
     margin-left:-1.1rem;
 }
@@ -93,7 +96,7 @@ table {
     width: 600px;
     border: 2px solid #ddd;
     color:rgb(42, 41, 41);
-    margin-left:3.8rem;
+    margin-left:9.8rem;
     margin-top:2rem; border-radius: 10px;
 }
 
@@ -101,6 +104,7 @@ th
 {
     background-color: #448f8f;
     padding: 8px;
+    color:white;
     text-align: left;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
