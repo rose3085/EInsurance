@@ -5,7 +5,7 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     border-color:var(--background-color);
     height:500px; width:700px;
-    margin-left:9rem;
+    margin-left:13rem;
     margin-top:1rem;
 
     
@@ -13,7 +13,7 @@
 }
 .viewDetailsHeader
 {
-    background-color: rgb(213, 233, 255);
+    background-color: #008a8a;
     height:80px;
     margin-top:-2.1rem; 
     border-bottom: 2px solid rgb(152, 191, 229);
@@ -21,7 +21,7 @@
    margin-left:-1.1rem;
    
 }
-.cancelButton
+.cancelButtons
 {
     margin-left:43.8rem;
     width:25px;
@@ -42,7 +42,7 @@ text-align: center;}
 
 .policyName
 {
-    color:rgb(26, 84, 84);
+    color:white;
     font-size: 20px;
     font-weight:bold;
     margin-top:0.1rem;
@@ -62,7 +62,8 @@ text-align: center;}
 {
     color:rgb(26, 25, 25);
     font-size: 15px;
-    margin-left:1rem;   
+    margin-left:1rem;
+    margin-top:1rem;   
 }
 .policyType
 {
@@ -88,13 +89,13 @@ table {
     width: 600px;
     border: 2px solid #ddd;
     color:rgb(42, 41, 41);
-    margin-left:3rem;
+    margin-left:3.8rem;
     margin-top:2rem; border-radius: 10px;
 }
 
 th
 {
-    background-color:rgb(127, 173, 213);
+    background-color: #448f8f;
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -106,7 +107,7 @@ th
   text-align: left;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  background-color:rgb(150, 185, 215);
+  background-color:#9ec2c2;
 }
 
 td:hover {
@@ -116,10 +117,10 @@ td:hover {
 
 .viewDetailsFooter
 {
-    background-color: rgb(213, 233, 255);
+    background-color:#9ec2c2;
     height:150px;
     margin-top:-2.1rem; 
-    border-top: 2px solid rgb(152, 191, 229);
+    border-top: 2px solid #9ec2c2;
     width :735px;
     margin-left:-1.1rem;
     display:flex;

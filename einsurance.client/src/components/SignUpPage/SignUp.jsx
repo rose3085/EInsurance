@@ -68,7 +68,7 @@ return (
 
             
             <div className="toggleSignUp">
-                <div className="line"> </div>
+                <div className="lines"> </div>
                     <p className="alreadyAccount"> Already have an account?
                     <div className="navLogin" onClick={handleLoginPageChange}>Login</div>
                     </p>

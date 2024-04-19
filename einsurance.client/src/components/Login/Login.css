@@ -131,6 +131,12 @@
     color:white;
     background-color: var(--main-color);
 }
+.button:hover{
+    background-color: var(--secondary-color2);
+    border-color: unset;
+}
+
+
 .noAccount
 {
     font-size: 15px;

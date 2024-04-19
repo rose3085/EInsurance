@@ -50,15 +50,15 @@ return(
                         <p className="filterLabel">Salary :</p>
                         {salary}
                     </div> */}
-                    <div className="policyType">
+                    <div className="policyTypes">
                         <p className="filterLabel">Type of Policy :</p>
                         <div className="coverName">{typeOfCover}</div>
                     </div>
-                    <div className="policyType">
+                    <div className="policyTypes">
                         <p className="filterLabel">Policy Term :</p>
                         <div className="coverName">{policyTerm}</div>
                     </div>
-                    <div className="policyType">
+                    <div className="policyTypes">
                         <p className="filterLabel">Cover Amount</p>
                         <div className="coverName">{coverAmount}</div>
                     </div>

@@ -21,6 +21,7 @@
 .signUpForm
 {
     margin-left:4rem;
+    
 }
 
 .createAccountInfo
@@ -244,10 +245,10 @@
 }
 
 
-.line
+.lines
 {
     width: 250px; 
     height: 1px; 
-    margin-left:1rem;
+    margin-left:1.5rem;
     background-color: grey;
 }
