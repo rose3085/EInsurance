@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import {  useState } from 'react';
 import { NepaliDatePicker } from "nepali-datepicker-reactjs"
-import "nepali-datepicker-reactjs/dist/index.css"
+import "nepali-datepicker-reactjs/dist/index.css";
+
 
 function Questiondetails() {
+
     const [dateofbirth, setDateOfBirth] = useState("");
     const [policyType, setPolicyType] = useState("Investment Plan");
     const [age, setAge] = useState(24);
@@ -54,6 +56,9 @@ function Questiondetails() {
                     throw new Error('Failed to call fetch api');
                 }
             })
+            .then(() => {
+                // Update context with response data
+            })
 
             
             .catch((error) => {
@@ -83,7 +88,7 @@ function Questiondetails() {
                         {/*    <option value="Vehicle">Vehicle Insurance Plan</option>*/}
                         {/*</select>*/}
                         <div className="mt-2">
-                            <input type="text" name="term" className=" h-8 w-52 m-2 rounded-sm text-lg block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                            <input type="text" name="term" className=" h-8 w-52 m-2 rounded-sm text-lg block px-2 text-base font-sans  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                              ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" placeholder="Lifeinsurance" onChange={(e) => { setPolicyType(e.target.value) }} />
                         </div>
                     </div>
