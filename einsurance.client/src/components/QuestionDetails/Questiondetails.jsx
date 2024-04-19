@@ -12,23 +12,28 @@ function Questiondetails() {
     const [maturityBenefits, setMaturityBenefits] = useState("true");
 
     const requestBody = {
+        filter: "some_value",
         policyType,
         terms,
         age,
         coverAmount,
         paymentMode,
-        maturityBenefits
+        maturityBenefits: maturityBenefits === "true",
     };
 
     function handleSubmit(e) {
         e.preventDefault();
+        if (!policyType || !paymentMode) {
+            console.error('PolicyType and PaymentMode are required.');
+            return;
+        }
         const apiUrl = `https://localhost:44361/policy/filter`;
         fetch(apiUrl, {
             method: 'POST', // Use the appropriate HTTP method
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ requestBody }),  
+            body: JSON.stringify( requestBody ),  
         })
             .then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -69,18 +74,18 @@ function Questiondetails() {
                         <div className='pt-2 pl-2 text-sm font-sans text-white'>
                             Type of Insurance
                         </div>
-                        <select name="plans" className='h-8 w-60 m-2 rounded-sm text-lg ' onChange={(e) => { setPolicyType(e.target.value) }}>
-                            <option value="Investment">Investment Plan</option>
-                            <option value="Child">Child Plan</option>
-                            <option value="High">High return Plan</option>
-                            <option value="Life Insurance">lifeinsurance</option>
-                            <option value="Health">Health Insurance Plan</option>
-                            <option value="Vehicle">Vehicle Insurance Plan</option>
-                        </select>
-                        {/*<div className="mt-2">*/}
-                        {/*    <input type="text" name="term" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset*/}
-                        {/*                     ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setPolicyType(e.target.value) }} />*/}
-                        {/*</div>*/}
+                        {/*<select name="plans" className='h-8 w-60 m-2 rounded-sm text-lg ' onChange={(e) => { setPolicyType(e.target.value) }}>*/}
+                        {/*    <option value="Investment">Investment Plan</option>*/}
+                        {/*    <option value="Child">Child Plan</option>*/}
+                        {/*    <option value="High">High return Plan</option>*/}
+                        {/*    <option value="Life Insurance">lifeinsurance</option>*/}
+                        {/*    <option value="Health">Health Insurance Plan</option>*/}
+                        {/*    <option value="Vehicle">Vehicle Insurance Plan</option>*/}
+                        {/*</select>*/}
+                        <div className="mt-2">
+                            <input type="text" name="term" className=" h-8 w-52 m-2 rounded-sm text-lg block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" placeholder="Lifeinsurance" onChange={(e) => { setPolicyType(e.target.value) }} />
+                        </div>
                     </div>
                     
                         <div className="px-3 py-6">
@@ -129,26 +134,28 @@ function Questiondetails() {
                                              ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setTerms(e.target.value) }} />
                                         </div>
                                     </div>
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="Age" className="block text-base font-medium leading-3 text-gray-900 font-sans">maturityBenefits</label>
-                                        <div className="mt-2">
-                                            <input type="checkbox"
-                                            name="maturityBenefits"
-                                            checked={maturityBenefits} className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setMaturityBenefits(e.target.checked) }} />
-                                        </div>
+                                <div className="sm:col-span-3 flex flex-row">
+                                    <input type="checkbox"
+                                        name="maturityBenefits"
+                                        checked={maturityBenefits} className="" onChange={(e) => { setMaturityBenefits(e.target.checked) }} />
+                                    <label htmlFor="Age" className="mt-7 pl-2 block text-base font-medium leading-3 text-gray-900 font-sans">Maturity Benefits</label>
+                                        
                                     </div>
 
-                                    <div className="sm:col-span-3">
-                                        <label htmlFor="paymentMode" className="block text-base font-medium leading-2 text-gray-900 font-sans">Payment Mode</label>
+                                <div className="sm:col-span-3">
+                                    <label htmlFor="paymentMode" className="block text-base font-medium leading-2 text-gray-900 font-sans" >Payment Mode</label>
                                         <div className="mt-2">
-                                            <select className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6"  onChange={(e) => { setPaymentMode(e.target.value) }}>
-                                                <option value="Half Yearly">Half-Yearly</option>
-                                                <option value="Yearly">Yearly</option>
-                                                <option value="Quarterly">Quarterly</option>
-                                                <option value="Monthly">Monthly</option>
-                                            </select>
+                                        {/*    <select className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset*/}
+                                        {/*     ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setPaymentMode(e.target.value) }} >*/}
+                                        {/*        <option value="Half Yearly">Half-Yearly</option>*/}
+                                        {/*        <option value="Yearly">Yearly</option>*/}
+                                        {/*        <option value="Quarterly">Quarterly</option>*/}
+                                        {/*        <option value="Monthly">Monthly</option>*/}
+                                        {/*</select>*/}
+                                        <div className="mt-2">
+                                            <input type="text" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" placeholder="Yearly" onChange={(e) => { setPaymentMode(e.target.value) }}/>
+                                        </div>
                                         </div>
                                     </div>
 
