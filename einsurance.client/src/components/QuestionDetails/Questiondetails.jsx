@@ -62,7 +62,7 @@ function Questiondetails() {
             .then((data) => {
                 console.log("hello");
                 updateResponseData(data);
-                navigate('/FilterResult');
+                navigate('/FilterResult', { state: { formData: requestBody } });
                 
                        
                  
