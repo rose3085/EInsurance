@@ -1,7 +1,7 @@
 .policyResultComponent
 {
     display:flex;
-    width:1100px;
+    width:500px;
     height:680px;
     flex-direction: row;
 }

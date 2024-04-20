@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path='EnterPhoneNumber' element={<EnterPhoneNumber/>}></Route>
       <Route path='EnterPassword' element={<EnterPassword/>}></Route>
       <Route path='FilterResult' element={<FilterResult/>}></Route>
-      <Route path='ViewDetail' element={<ViewDetail/>}></Route>
+          <Route path="/ViewDetail/:companyName" element={<ViewDetail/>}></Route>
     </Route>
 
 

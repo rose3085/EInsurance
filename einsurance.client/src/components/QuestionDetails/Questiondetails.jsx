@@ -1,9 +1,12 @@
-import {  useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NepaliDatePicker } from "nepali-datepicker-reactjs"
 import "nepali-datepicker-reactjs/dist/index.css";
-
+import { useResponse } from '../../context/ResponseContext';
+import { useNavigate } from 'react-router-dom';
 
 function Questiondetails() {
+    const navigate = useNavigate();
+    const { updateResponseData } = useResponse(); 
 
     const [dateofbirth, setDateOfBirth] = useState("");
     const [policyType, setPolicyType] = useState("Investment Plan");
@@ -56,8 +59,13 @@ function Questiondetails() {
                     throw new Error('Failed to call fetch api');
                 }
             })
-            .then(() => {
-                // Update context with response data
+            .then((data) => {
+                console.log("hello");
+                updateResponseData(data);
+                navigate('/FilterResult');
+                
+                       
+                 
             })
 
             
@@ -70,6 +78,7 @@ function Questiondetails() {
                     console.error('Other error:', error);
                 }
             });
+       
     }
     return (
         <>
