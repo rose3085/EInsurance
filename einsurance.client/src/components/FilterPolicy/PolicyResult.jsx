@@ -38,8 +38,9 @@ const PolicyResult = () => {
                                 alt="" className='w-96 h-36' /></div>
 
                     </div>
-                    <div className="policy"><div className="policyNames">{responseValue.companyName}</div>
-                        <div className="minCover">Minimum Cover:{responseValue.minCover} </div>
+                        <div className="policy"><div className="policyNames">Policy Name: {responseValue.policyName}</div>
+                            <div className="minCover">Company Name: {responseValue.companyName} </div>
+                        <div className="minCover">Minimum Cover: {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.companyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>

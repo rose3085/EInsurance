@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import insuranceIcon from '../Icons/insuranceIcon.png';
 import './ViewDetail.css';
