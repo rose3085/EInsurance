@@ -1,0 +1,174 @@
+:root{
+    --background-color:aliceblue;
+    --background-color2 :#340CB9;
+    --main-color: #00A8A8;
+    --text-color: #05BD9F;
+    --secondary-color: #DE3B40;
+    --secondary-color1: #EFB034;
+    --secondary-color2 : #0EAA42;
+    --secondary-color3 :#379AE6;
+    --text-color2: rgb(60, 58, 58);
+}
+
+.loginMain
+{
+    display : flex;
+    color : var(--background-color);
+    margin-left:9rem;
+    margin-bottom:2rem;
+    
+}
+
+.mainComponent
+{
+   
+    border:2px solid ;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-color:var(--background-color);
+    height:650px; width:700px;
+    margin-left:9rem;
+    margin-top:1rem;
+    text-align: center;
+   
+}
+
+.headerComponent
+{
+    height:30px;
+    margin-top:-1rem;
+    text-align:left;
+    margin-left:-1.3rem;
+    display:flex;
+}
+
+.cancelButton
+{
+    margin-top:1rem;
+    margin-left:52rem;
+}
+.loginComponents
+{
+    display: flex;
+}
+.loginLogo
+{
+   
+    margin-left:-2.3rem;
+    width:500px;
+    height:240px;
+    padding: 20px;
+    margin-top:1rem;
+    
+   
+  
+}
+.handsLogo
+{
+    margin-top:3rem;
+    width:260px;
+    margin-left:6rem;
+}
+.loginForm
+{
+    
+    margin-top:3rem;
+}
+.welcomeBack
+{
+    font-size: 35px;
+    font-weight:700;
+    font-style:inherit;
+    color:var(--text-color2);
+    margin-left:-1.2rem;
+    margin-top:3rem;
+
+}
+.quotes
+{
+    font-size: 30px;
+    font-weight:700;
+    font-style:Arial;
+    color:var(--text-color2);
+    margin-top:1rem;
+    
+}
+
+.loginInfo
+{
+    
+    font-size: 18px;
+    color:grey;
+    font-weight:700;
+    font-style:inherit;
+    margin-left:-5rem;
+}
+.enterEmail
+{   color:black;
+    margin-top:0.5rem;
+    width:250px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--background-color);
+
+}
+.enterPassword {
+    color:black;
+    width:250px;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--background-color);
+}
+.password
+{
+    margin-top:0.5rem;
+}
+
+.button
+{
+    width:250px;
+    font-size:1rem;
+    font-weight: 900;
+    font-style:normal;
+    color:white;
+    background-color: var(--main-color);
+    height:40px;
+    border-radius: 5px;
+}
+.button:hover{
+    background-color: var(--secondary-color2);
+    border-color: unset;
+}
+
+
+.noAccount
+{
+    font-size: 18px;
+    font-weight:700;
+    font-style:inherit;
+    color:var(--text-color2);
+    margin-left:-4rem;
+    margin-top:2rem;
+}
+.navSignUp
+{
+
+    font-size: 18px;
+    font-weight:700;
+    font-style:inherit;
+    color:var(--main-color);
+   cursor: pointer;
+    margin-top:-1.7rem;
+    margin-left:17rem;
+    transition: color 0.3s ease;
+}
+.navSignUp:hover
+{
+    color:#DE3B40;
+    font-weight: bold;
+}

@@ -1,0 +1,100 @@
+.filterWrap
+{
+   width:1340px;
+   height:580px;
+   overflow-x: hidden;
+   overflow-y:scroll;
+    -ms-overflow-style: none;
+}
+
+.firstComponent
+{
+    margin-top:1rem;
+    display:flex;
+    height:180px;
+    width:900px;
+    border: 1px solid;
+    border-color: grey;
+    padding :8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: normal;
+    color:grey;
+    margin-left:11rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    margin-left:17rem;
+}
+.companyLogos
+{
+    margin-top:1.5rem;
+    width:400px;
+    margin-left:1rem;
+   
+    box-shadow: 0px 0px 0.1px rgba(0, 0, 0, 0.5);
+}
+
+.companyNames
+{
+    width:300px;
+    border-right: 1px solid rgb(181, 207, 230); 
+}
+
+.policy
+{
+/* {   background-color: rgb(242, 255, 255); */
+    /* background: conic-gradient(from 0deg #e5eff8,aliceblue); */
+    font-size: 20px;
+    font-weight: bold;
+    width:335px;
+    color: rgb(97, 96, 96);
+    border-right: 1px solid rgb(181, 207, 230); 
+    margin-left:1rem;
+}
+
+.policyNames
+{
+    margin-left:1rem;
+    margin-right: 0.5rem;
+    color:rgb(97, 96, 96);
+}
+.minCover
+{
+    margin-left:1rem;
+    margin-top:1rem;
+    font-size: 17px;
+    font-weight: normal;
+    width:240px;
+    color: rgb(97, 96, 96);
+}
+
+/* .moreDetail
+{
+    background: conic-gradient(from 0deg #e5eff8,aliceblue);
+    width:220px;
+} */
+.detailButton
+{
+    margin-top:5rem;
+    margin-left:1.5rem;
+    width:120px;
+    height:45px;
+    font-size:17px;
+    font-weight:bold;
+    font-style:normal;
+    background-color: #008a8a;
+    color:white;
+    transition: background-color 0.3s ease;
+    border-radius: 7px;
+}
+
+.detailButton:hover{
+    background-color: var(--secondary-color2);
+    border-color: unset;
+}
+
+.arrow
+{
+    width:15px;
+    margin-top:-1rem;
+    margin-left:6rem;
+}
