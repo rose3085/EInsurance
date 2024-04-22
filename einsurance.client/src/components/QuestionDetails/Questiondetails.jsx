@@ -34,6 +34,7 @@ function Questiondetails() {
             return;
         }
         const apiUrl = `https://localhost:44361/policy/filter`;
+        //const apiUrl = `https://localhost:7056/policy/filter`;
         fetch(apiUrl, {
             method: 'POST', // Use the appropriate HTTP method
             headers: {

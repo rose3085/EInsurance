@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import insuranceIcon from '../Icons/insuranceIcon.png';
 import './ViewDetail.css';
-import userData from './data.json';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import cancel from '../Icons/CancelButton.png';
@@ -117,25 +116,28 @@ const ViewDetail = () =>
                     </tr>
                     </tbody>
       </table>
-                      {policyData.maturityBenefits ? <div className="policyType">
-            <div className="descriptionLable">Maturity Benefits:</div>
-                          <div>{policyData.maturityBenefits}</div>
-        </div>:null}
+          
 
                       {policyData.surrenderPolicy? <div className="policyType">
             <div className="descriptionLable">Surrender Policy:</div>
                           <div>{policyData.surrenderPolicy}</div>
         </div>:null}
         
-                      {policyData.riskCommencementPeriod?<div className="policyType">
+                      {policyData.riskCommencementPeriod?<div className="risk">
             <div className="descriptionLable">Risk Commencement Period:</div>
                           <div>{policyData.riskCommencementPeriod}</div>
         </div>: null }
 
-                      {policyData.riskCommencementDetails?  <div className="policyType">
+                      {policyData.riskCommencementDetails?  <div className="riskDetail">
             <div className="descriptionLable">Risk Commencement Details:</div>
                           <div>{policyData.riskCommencementDetails}</div>
         </div> : null}
+
+        {policyData.maturityBenefits ? <div className="policyType">
+            <div className="descriptionLable">Maturity Benefits:</div>
+                          <div>{policyData.maturityBenefits}</div>
+        </div>:null}
+
             <div className="viewDetailsFooter">
                           <div className="companyName">{policyData.companyName}
                               {policyData.policyLaunchDate ? <div className="policyLaunchDate">
