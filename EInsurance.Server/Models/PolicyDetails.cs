@@ -38,5 +38,7 @@
         public CompanyDetails CompanyName { get; set; }
 
         public ICollection<AddonPackages> Packages { get; set; }
+
+        public ICollection<PremiumRate> PremiumRate { get; set; }
     }
 }
