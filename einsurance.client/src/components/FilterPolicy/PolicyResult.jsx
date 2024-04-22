@@ -18,10 +18,10 @@ const PolicyResult = () => {
     //    // Generate a random ID 
     //    return Math.random().toString(36).substr(2, 5) + '_' + Date.now().toString(36);
     //}
-    const handleNavigate = (companyName) => {
-        console.log("policy");
+    const handleNavigate = (policyName) => {
+        console.log("policy",policyName);
        /* navigate(`/ViewDetail/${id}`);*/
-        navigate(`/ViewDetail/${encodeURIComponent(companyName)}`);
+        navigate(`/ViewDetail/${encodeURIComponent(policyName)}`);
     }
 
 
@@ -43,7 +43,7 @@ const PolicyResult = () => {
                         <div className="minCover">Minimum Cover: {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">
-                            <button className="detailButton" onClick={() => handleNavigate(responseValue.companyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>
+                            <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>
                     </div>
                 </div>
                     );
