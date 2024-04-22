@@ -12,8 +12,8 @@ import { useResponse } from '../../context/ResponseContext';
 
 const ViewDetail = () =>
 {
-    const { companyName } = useParams();
-    /*const decodedCompanyName = decodeURIComponent(companyName);*/
+    const { policyName } = useParams();
+   /* const decodedPolicyName = decodeURIComponent(policyName);*/
     const { responseData } = useResponse();
     const [policyData, setPolicyData] = useState(null);
 
@@ -22,7 +22,7 @@ const ViewDetail = () =>
 
     useEffect(() => {
         if (responseData) {
-            const filteredPolicy = responseData.find(policy => policy.companyName === companyName);
+            const filteredPolicy = responseData.find(policy => policy.policyName === policyName);
             if (filteredPolicy) {
                 setPolicyData(filteredPolicy);
             } else {
@@ -30,7 +30,7 @@ const ViewDetail = () =>
                 navigate('/FilterResult');
             }
         }
-    }, [companyName, responseData, navigate]);
+    }, [policyName, responseData, navigate]);
 
     if (!responseData) {
         

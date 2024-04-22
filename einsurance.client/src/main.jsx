@@ -29,7 +29,7 @@ const router = createBrowserRouter(
           <Route path='FilterResult' element={<FilterResult />}></Route>
           <Route path='about' element={<About />}></Route>
           <Route path='insurance' element={<Insurancepolicy />}></Route>
-          <Route path="/ViewDetail/:companyName" element={<ViewDetail/>}></Route>
+          <Route path="/ViewDetail/:policyName" element={<ViewDetail/>}></Route>
     </Route>
 
 
