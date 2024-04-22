@@ -13,6 +13,8 @@ import EnterPhoneNumber from './components/SignUpPage/EnterPhoneNumber.jsx';
 import EnterPassword from './components/SignUpPage/EnterPassword.jsx';
 import FilterResult from './components/FilterPolicy/FilterResult.jsx';
 import ViewDetail from './components/FilterPolicy/ViewDetail.jsx';
+import About from './components/Aboutus/About.jsx';
+import Insurancepolicy from './components/Insurance/Insurancepolicy.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,8 +26,10 @@ const router = createBrowserRouter(
       <Route path='EnterEmail' element={<EnterEmail/>}></Route>
       <Route path='EnterPhoneNumber' element={<EnterPhoneNumber/>}></Route>
       <Route path='EnterPassword' element={<EnterPassword/>}></Route>
-      <Route path='FilterResult' element={<FilterResult/>}></Route>
-          <Route path="/ViewDetail/:companyName" element={<ViewDetail/>}></Route>
+          <Route path='FilterResult' element={<FilterResult />}></Route>
+          <Route path='about' element={<About />}></Route>
+          <Route path='insurance' element={<Insurancepolicy />}></Route>
+          <Route path="/ViewDetail/:policyName" element={<ViewDetail/>}></Route>
     </Route>
 
 

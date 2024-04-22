@@ -4,8 +4,8 @@ function CheckOut() {
     return (
         <>
             <div>
-            <div class="flex flex-col text-left w-full ">
-                    <h1 class="sm:text-3xl text-3xl font-medium title-font mb-2 text-gray-900 font-sans px-14 "><b className='text-[#0065ff]'>Check</b> Out</h1>
+                <div className="flex flex-col text-left w-full ">
+                    <h1 className="sm:text-3xl text-3xl font-medium title-font mb-2 text-gray-900 font-sans px-14 "><b className='text-[#0065ff]'>Check</b> Out</h1>
                 </div>
                 <div className='container mx-auto flex px-28 py-5 '>
                 
@@ -15,14 +15,14 @@ function CheckOut() {
                             alt="AirMax Pro"
                             className="z-0 h-full w-full rounded-md object-cover"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 text-left">
-                            <h1 class="text-lg font-semibold text-white">Hello</h1>
-                            <p class="mt-2 text-sm text-gray-300">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-                                debitis?
-                            </p>
-                            <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 text-left">
+                            <h1 className="text-lg font-semibold text-white">Nepal Life Anmol Jeevan</h1>
+                            {/*<p className="mt-2 text-sm text-gray-300">*/}
+                            {/*    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,*/}
+                            {/*    debitis?*/}
+                            {/*</p>*/}
+                            <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
                                 Visit →
                             </button>
                         </div>
@@ -33,14 +33,14 @@ function CheckOut() {
                             alt="AirMax Pro"
                             className="z-0 h-full w-full rounded-md object-cover"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 text-left">
-                            <h1 class="text-lg font-semibold text-white">Hello</h1>
-                            <p class="mt-2 text-sm text-gray-300">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-                                debitis?
-                            </p>
-                            <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 text-left">
+                            <h1 className="text-lg font-semibold text-white">Naulo Jeevan Sambriddhi</h1>
+                            {/*<p className="mt-2 text-sm text-gray-300">*/}
+                            {/*    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,*/}
+                            {/*    debitis?*/}
+                            {/*</p>*/}
+                            <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
                             Visit →
                             </button>
                         </div>
@@ -51,14 +51,14 @@ function CheckOut() {
                             alt="AirMax Pro"
                             className="z-0 h-full w-full rounded-md object-cover"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 text-left">
-                            <h1 class="text-lg font-semibold text-white">Hello</h1>
-                            <p class="mt-2 text-sm text-gray-300">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-                                debitis?
-                            </p>
-                            <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 text-left">
+                            <h1 className="text-lg font-semibold text-white">Nepal Life Sunaulo Bhabisya Jiwan Bima Yojana</h1>
+                            {/*<p className="mt-2 text-sm text-gray-300">*/}
+                            {/*    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,*/}
+                            {/*    debitis?*/}
+                            {/*</p>*/}
+                            <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
                             Visit →
                             </button>
                         </div>
