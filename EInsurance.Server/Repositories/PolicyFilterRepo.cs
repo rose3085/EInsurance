@@ -20,26 +20,38 @@ namespace EInsurance.Server.Repositories
         {
             try
             {
+                var factor = filters.CoverAmount / 1000;
                 if (filters.MaturityBenefits == true)
                 {
                     var policiesList = await _context
                         .policyTerms.Include(x => x.PolicyDetails)
                         .Include(x => x.PolicyDetails.CompanyName)
+                        .Include(x => x.PolicyDetails.PremiumRate)
                         .Where(x =>
+                            //x.PolicyDetails.Id == 1
                             x.PolicyTerm == filters.Terms
-                            & x.PolicyDetails.MaturityBenefits != null
-                            & x.PolicyDetails.MinCover <= filters.CoverAmount
-                            & (
+                            && x.PolicyDetails.MaturityBenefits == null
+                            && x.PolicyDetails.MinCover <= filters.CoverAmount
+                            && (
                                 x.PolicyDetails.MaxCover >= filters.CoverAmount
                                 || x.PolicyDetails.MaxCover == null
                             )
-                            & (
+                            && (
                                 x.PolicyDetails.ExpiryAge > filters.Age
                                 || x.PolicyDetails.ExpiryAge == null
                             )
-                            & x.PolicyDetails.MinEntryAge <= filters.Age
-                            & x.PolicyDetails.MaxEntryAge >= filters.Age
-                            & x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
+                            && (
+                                x.PolicyDetails.ExpiryAge >= (filters.Age + filters.Terms)
+                                || x.PolicyDetails.ExpiryAge == null
+                            )
+                            && x.PolicyDetails.MinEntryAge <= filters.Age
+                            && x.PolicyDetails.MaxEntryAge >= filters.Age
+                            && x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
+                        //&& (
+                        //    x.PolicyDetails.PremiumRate.Any(x =>
+                        //        x.StartAge >= filters.Age && x.EndAge <= filters.Age
+                        //    )
+                        //)
                         )
                         .OrderBy(a => Guid.NewGuid())
                         .Take(10)
@@ -62,7 +74,15 @@ namespace EInsurance.Server.Repositories
                             RiskCommencementPeriod = x.PolicyDetails.RiskCommencementPeriod,
                             CompanyName = x.PolicyDetails.CompanyName.CompanyName,
                             PhoneNumber = x.PolicyDetails.CompanyName.PhoneNumber,
-                            Website = x.PolicyDetails.CompanyName.Website
+                            Website = x.PolicyDetails.CompanyName.Website,
+                            premiumRate =
+                                (
+                                    x.PolicyDetails.PremiumRate.Where(pr =>
+                                        pr.StartAge <= filters.Age && pr.EndAge >= filters.Age
+                                    )
+                                        .Select(pr => pr.Rate)
+                                        .FirstOrDefault()
+                                ) * (factor)
                         })
                         .ToListAsync();
 
@@ -72,21 +92,32 @@ namespace EInsurance.Server.Repositories
                 var policies = await _context
                     .policyTerms.Include(x => x.PolicyDetails)
                     .Include(x => x.PolicyDetails.CompanyName)
+                    .Include(x => x.PolicyDetails.PremiumRate)
                     .Where(x =>
+                        //x.PolicyDetails.Id == 1
                         x.PolicyTerm == filters.Terms
-                        & x.PolicyDetails.MaturityBenefits == null
-                        & x.PolicyDetails.MinCover <= filters.CoverAmount
-                        & (
+                        && x.PolicyDetails.MaturityBenefits != null
+                        && x.PolicyDetails.MinCover <= filters.CoverAmount
+                        && (
                             x.PolicyDetails.MaxCover >= filters.CoverAmount
                             || x.PolicyDetails.MaxCover == null
                         )
-                        & (
+                        && (
                             x.PolicyDetails.ExpiryAge > filters.Age
                             || x.PolicyDetails.ExpiryAge == null
                         )
-                        & x.PolicyDetails.MinEntryAge <= filters.Age
-                        & x.PolicyDetails.MaxEntryAge >= filters.Age
-                        & x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
+                        && (
+                            x.PolicyDetails.ExpiryAge >= (filters.Age + filters.Terms)
+                            || x.PolicyDetails.ExpiryAge == null
+                        )
+                        && x.PolicyDetails.MinEntryAge <= filters.Age
+                        && x.PolicyDetails.MaxEntryAge >= filters.Age
+                        && x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
+                    //&& (
+                    //    x.PolicyDetails.PremiumRate.Any(x =>
+                    //        x.StartAge >= filters.Age && x.EndAge <= filters.Age
+                    //    )
+                    //)
                     )
                     .OrderBy(a => Guid.NewGuid())
                     .Take(10)
@@ -109,10 +140,17 @@ namespace EInsurance.Server.Repositories
                         RiskCommencementPeriod = x.PolicyDetails.RiskCommencementPeriod,
                         CompanyName = x.PolicyDetails.CompanyName.CompanyName,
                         PhoneNumber = x.PolicyDetails.CompanyName.PhoneNumber,
-                        Website = x.PolicyDetails.CompanyName.Website
+                        Website = x.PolicyDetails.CompanyName.Website,
+                        premiumRate =
+                            (
+                                x.PolicyDetails.PremiumRate.Where(pr =>
+                                    pr.StartAge <= filters.Age && pr.EndAge >= filters.Age
+                                )
+                                    .Select(pr => pr.Rate)
+                                    .FirstOrDefault()
+                            ) * (factor)
                     })
                     .ToListAsync();
-
                 return policies;
             }
             catch (Exception ex)
