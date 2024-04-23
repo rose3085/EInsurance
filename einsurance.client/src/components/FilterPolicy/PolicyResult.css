@@ -26,8 +26,8 @@
 }
 .companyLogos
 {
-    margin-top:1.5rem;
-    width:400px;
+    margin-top:3rem;
+    width:270px;
     margin-left:1rem;
    
     box-shadow: 0px 0px 0.1px rgba(0, 0, 0, 0.5);
@@ -35,6 +35,7 @@
 
 .companyNames
 {
+    
     width:300px;
     border-right: 1px solid rgb(181, 207, 230); 
 }
@@ -51,7 +52,7 @@
     margin-left:1rem;
 }
 
-.policyNames
+.policyNamees
 {
     margin-left:1rem;
     margin-right: 0.5rem;

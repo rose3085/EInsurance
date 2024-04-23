@@ -42,8 +42,11 @@ const ViewDetail = () =>
         return <div>Policy not found!</div>;
     }
 
-    const handleCancelButton = () => {
-        navigate("/FilterResult");
+    const handleCancelButton = (e) => {
+        // e.preventDefault();
+        // navigate("/FilterResult");
+
+        window.history.back();
     }
 
 
@@ -52,13 +55,15 @@ const ViewDetail = () =>
         <section className="viewDetailsMain">
             <div className="viewDetailsComponents"><div className="viewDetailsHeader">
             <div className="cancelButtons">
+                <div className="linees"></div>
                     <div className="cancel" onClick={handleCancelButton}><img src={cancel}  alt=""       height='25px' id='checked'/> </div>
                     </div>
                
         <div className="policyNameDiv">
             <div><img className="insuranceIcon"src={insuranceIcon}  alt=""height='45px' id='checked'/></div>
-                      <p className="policyName">{policyData.policyName}</p>
+                      <div className="policyNames">{policyData.policyName}</div>
                </div>
+               <div className="lines"></div>
                
             </div>
             <div className='otherDetails'>
@@ -118,7 +123,7 @@ const ViewDetail = () =>
       </table>
           
 
-                      {policyData.surrenderPolicy? <div className="policyType">
+                      {policyData.surrenderPolicy? <div className="surrenderLabel">
             <div className="descriptionLable">Surrender Policy:</div>
                           <div>{policyData.surrenderPolicy}</div>
         </div>:null}
