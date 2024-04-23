@@ -67,6 +67,7 @@ function Questiondetails() {
                 console.log("hello");
                 updateResponseData(data);
                 navigate('/FilterResult', { state: { formData: requestBody } });
+                //navigate('/compare', { state: { formData: requestBody } });
 
 
 

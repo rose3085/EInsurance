@@ -58,7 +58,7 @@ namespace EInsurance.Server.Repositories
                         .Select(x => new PoliciesDetailsDTO
                         {
                             PolicyDescription = x.PolicyDetails.PolicyDescription,
-                            PaymentMode = x.PolicyDetails.PaymentMode,
+                            PaymentMode = filters.PaymentMode,
                             PolicyName = x.PolicyDetails.PolicyName,
                             PolicyLaunchDate = x.PolicyDetails.PolicyLaunchDate,
                             ExpiryAge = x.PolicyDetails.ExpiryAge,
@@ -124,7 +124,7 @@ namespace EInsurance.Server.Repositories
                     .Select(x => new PoliciesDetailsDTO
                     {
                         PolicyDescription = x.PolicyDetails.PolicyDescription,
-                        PaymentMode = x.PolicyDetails.PaymentMode,
+                        PaymentMode =filters.PaymentMode,
                         PolicyName = x.PolicyDetails.PolicyName,
                         PolicyLaunchDate = x.PolicyDetails.PolicyLaunchDate,
                         ExpiryAge = x.PolicyDetails.ExpiryAge,

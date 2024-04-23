@@ -18,7 +18,7 @@
     margin-left:2rem;
     background-color: var(--background-color);
     border-color : var(--background-color);
-    height:560px;
+    height:540px;
     width:300px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -69,7 +69,7 @@
 }
 .policyTypes
 {
-    margin-top:1.5rem;
+    margin-top:1rem;
     width:240px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;

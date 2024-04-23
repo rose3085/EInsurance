@@ -1,5 +1,3 @@
-import Compare from './Compare';
-
 import { useState, useEffect } from 'react';
 import insuranceIcon from '../Icons/insuranceIcon.png';
 import './ViewDetail.css';
@@ -11,27 +9,28 @@ import internet from '../Icons/internet.png';
 import { useResponse } from '../../context/ResponseContext';
 
 
-const ViewDetail = () =>
+const CompareResult = () =>
 {
-    const { policyName } = useParams();
+
    /* const decodedPolicyName = decodeURIComponent(policyName);*/
     const { responseData } = useResponse();
+   
+
     const [policyData, setPolicyData] = useState(null);
-
+    const { policyName1 } = useParams();
     const navigate = useNavigate();
-
-
+  
     useEffect(() => {
-        if (responseData) {
-            const filteredPolicy = responseData.find(policy => policy.policyName === policyName);
-            if (filteredPolicy) {
-                setPolicyData(filteredPolicy);
-            } else {
-                // Handle case where policy data with the given company name is not found
-                navigate('/FilterResult');
-            }
-        }
-    }, [policyName, responseData, navigate]);
+      if (responseData) {
+        const filteredPolicies = responseData.filter(policy => policy.policyName === policyName1);
+     
+        setPolicyData(filteredPolicies);
+    
+      }
+    }, [policyName1,  responseData, navigate]);
+  
+  
+  
 
     if (!responseData) {
         
@@ -54,9 +53,7 @@ const ViewDetail = () =>
 
       return (
         <section className="viewDetailsMain">
-            {/* <div className="comparePolicies">
-            <Compare/>
-            </div> */}
+            
             <div className="viewDetailsComponents"><div className="viewDetailsHeader">
             <div className="cancelButtons">
                 <div className="linees"></div>
@@ -150,7 +147,7 @@ const ViewDetail = () =>
             <div className="viewDetailsFooter">
                           <div className="companyName">{policyData.companyName}
                               {policyData.policyLaunchDate ? <div className="policyLaunchDate">
-                                  <div>Policy Launch Date : </div> {policyData.policyLaunchDate.split("T")[0]}</div> : null}
+                                  <div>Policy Launch Date :</div> {policyData.dateWithoutTime}</div> : null}
                           
                 </div>
                 <div className="contactCompany">
@@ -176,4 +173,4 @@ const ViewDetail = () =>
 
 }
 
-export default ViewDetail;
+export default CompareResult;

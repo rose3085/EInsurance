@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import "./Summary.css";
+import Compare from './Compare';
 import filter from '../Icons/filter2.png';
 import { useResponse } from '../../context/ResponseContext';
 import { useLocation } from 'react-router-dom';
@@ -48,6 +49,10 @@ return(
                     </div>
             
             </div>
+
+            {/* <div className="comparePolicies">
+            <Compare/>
+            </div> */}
     </section>
 );
 

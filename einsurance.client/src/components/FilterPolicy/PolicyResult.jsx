@@ -5,18 +5,17 @@ import nepalLife from "../Icons/NepalLifeLogo.png";
 import sunLife from "../Icons/SunlifeInsurance.jpg";
 import './PolicyResult.css';
 import { useNavigate } from 'react-router-dom';
-
-
-
-
 import arrow from '../Icons/rightArrow.png';
+import { useLocation } from 'react-router-dom';
 import { useResponse } from '../../context/ResponseContext';
 
 
 const PolicyResult = () => {
     const { responseData } = useResponse();
     const navigate = useNavigate();
-
+    
+    const location = useLocation();
+    const formData = location.state?.formData || {};
 
     //const generateRandomId = () => {
     //    // Generate a random ID 
@@ -26,8 +25,10 @@ const PolicyResult = () => {
         console.log("policy",policyName);
        /* navigate(`/ViewDetail/${id}`);*/
         navigate(`/ViewDetail/${encodeURIComponent(policyName)}`);
-    }
+      
 
+    }
+    //  const premium = responseValue.premiumRate / responseValue.policyTerm ;
 
     const companyLogo = 
     {
@@ -56,8 +57,9 @@ const PolicyResult = () => {
                     </div>
                         <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
-                            {responseValue.premiumRate ? <div className="minCover">Premium Rate: {responseValue.premiumRate} </div>:  null}
-                        <div className="minCover">Minimum Cover: {responseValue.minCover} </div>
+                            {responseValue.premiumRate ? <div className="minCover">Premium Rate:
+                             Rs {((responseValue.premiumRate / responseValue.policyTerm).toFixed(3))}</div>:  null}
+                        <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>

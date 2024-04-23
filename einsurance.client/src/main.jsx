@@ -15,6 +15,7 @@ import FilterResult from './components/FilterPolicy/FilterResult.jsx';
 import ViewDetail from './components/FilterPolicy/ViewDetail.jsx';
 import About from './components/Aboutus/About.jsx';
 import Insurancepolicy from './components/Insurance/Insurancepolicy.jsx';
+import CompareResult from './components/FilterPolicy/CompareResult.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
           <Route path='about' element={<About />}></Route>
           <Route path='insurance' element={<Insurancepolicy />}></Route>
           <Route path="/ViewDetail/:policyName" element={<ViewDetail/>}></Route>
+          {/* <Route path='CompareResult' element={<CompareResult/>}></Route> */}
     </Route>
 
 
