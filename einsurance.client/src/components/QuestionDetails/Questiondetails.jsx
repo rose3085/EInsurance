@@ -17,6 +17,17 @@ function Questiondetails() {
     const [coverAmount, setCoverAmount] = useState(5000);
     const [maturityBenefits, setMaturityBenefits] = useState("true");
 
+    const [formData, setFormData] = useState({
+        policyType: 'Investment',
+        userName: '',
+        age: '',
+        terms: '',
+        paymentMode: 'Yearly',
+        sumAssured: '',
+        maturityBenefits: false
+    });
+
+
     const requestBody = {
         filter: "some_value",
         policyType,
@@ -33,8 +44,8 @@ function Questiondetails() {
             console.error('PolicyType and PaymentMode are required.');
             return;
         }
-        const apiUrl = `https://localhost:44361/policy/filter`;
-        //const apiUrl = `https://localhost:7056/policy/filter`;
+        //const apiUrl = `https://localhost:44361/policy/filter`;
+        const apiUrl = `https://localhost:7056/policy/filter`;
         fetch(apiUrl, {
             method: 'POST', // Use the appropriate HTTP method
             headers: {
@@ -82,6 +93,13 @@ function Questiondetails() {
             });
 
     }
+
+
+    useEffect(() => {
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
+
+
     return (
         <>
             <div className='flex justify-center items-center '>

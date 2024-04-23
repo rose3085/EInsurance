@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-
+import asianLife from '../Icons/AsianLife.png';
+import parbhuMahalaxmi from "../Icons/ParbhuMahalaxmi.jpg";
+import nepalLife from "../Icons/NepalLifeLogo.png";
+import sunLife from "../Icons/SunlifeInsurance.jpg";
 import './PolicyResult.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,13 +29,14 @@ const PolicyResult = () => {
     }
 
 
-    // const companyLogo = 
-    // {
-    //     "Nepal": require("./path/to/images/image_A.png"),
-    // "Company B": require("./path/to/images/image_B.png"),
-    // "Company C": require("./path/to/images/image_C.png"),
-    // }
-
+    const companyLogo = 
+    {
+        "Parbhu Mahalaxmi Life Insurance":parbhuMahalaxmi,
+        "Sun Nepal Life Insurance Company Limited":sunLife,
+        "Nepal Life":nepalLife,
+        "Asian Life Insurance":asianLife,
+    }
+    
 
     return (
         <section className="policyFilterResultMain">
@@ -42,13 +46,15 @@ const PolicyResult = () => {
                 return(
                 <div className="firstComponent" key={index}>
                     <div className="companyNames">
-                        <div className="">
+                        <div className="companyLogos">
                             {/* {responseValue.companyName } */}
-                            <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221223125246/LIFE-INSURANCE-2.png'
-                                alt="" className='w-96 h-36' />
+                            {/* <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221223125246/LIFE-INSURANCE-2.png'
+                                alt="" className='w-96 h-36' /> */}
+
+                                <img src={companyLogo[responseValue.companyName]} alt="" height='45px' />
                         </div>
                     </div>
-                        <div className="policy"><div className="policyNames">Policy Name: {responseValue.policyName}</div>
+                        <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
                         <div className="minCover">Minimum Cover: {responseValue.minCover} </div>
                     </div>
