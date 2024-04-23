@@ -30,7 +30,7 @@ namespace EInsurance.Server.Repositories
                         .Where(x =>
                             //x.PolicyDetails.Id == 1
                             x.PolicyTerm == filters.Terms
-                            && x.PolicyDetails.MaturityBenefits == null
+                            && x.PolicyDetails.MaturityBenefits != null
                             && x.PolicyDetails.MinCover <= filters.CoverAmount
                             && (
                                 x.PolicyDetails.MaxCover >= filters.CoverAmount
@@ -96,7 +96,7 @@ namespace EInsurance.Server.Repositories
                     .Where(x =>
                         //x.PolicyDetails.Id == 1
                         x.PolicyTerm == filters.Terms
-                        && x.PolicyDetails.MaturityBenefits != null
+                        && x.PolicyDetails.MaturityBenefits == null
                         && x.PolicyDetails.MinCover <= filters.CoverAmount
                         && (
                             x.PolicyDetails.MaxCover >= filters.CoverAmount
