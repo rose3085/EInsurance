@@ -56,6 +56,7 @@ const PolicyResult = () => {
                     </div>
                         <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
+                            {responseValue.premiumRate ? <div className="minCover">Premium Rate: {responseValue.premiumRate} </div>:  null}
                         <div className="minCover">Minimum Cover: {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">

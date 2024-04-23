@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 /*import { NepaliDatePicker } from "nepali-datepicker-reactjs"*/
 /*import "nepali-datepicker-reactjs/dist/index.css";*/
 import { useResponse } from '../../context/ResponseContext';
@@ -17,15 +17,6 @@ function Questiondetails() {
     const [coverAmount, setCoverAmount] = useState(5000);
     const [maturityBenefits, setMaturityBenefits] = useState("true");
 
-    const [formData, setFormData] = useState({
-        policyType: 'Investment',
-        userName: '',
-        age: '',
-        terms: '',
-        paymentMode: 'Yearly',
-        sumAssured: '',
-        maturityBenefits: false
-    });
 
 
     const requestBody = {
@@ -45,7 +36,7 @@ function Questiondetails() {
             return;
         }
         //const apiUrl = `https://localhost:44361/policy/filter`;
-        const apiUrl = `https://localhost:7056/policy/filter`;
+        const apiUrl = `https://localhost:7056/async/filter`;
         fetch(apiUrl, {
             method: 'POST', // Use the appropriate HTTP method
             headers: {
@@ -95,9 +86,6 @@ function Questiondetails() {
     }
 
 
-    useEffect(() => {
-        localStorage.setItem('formData', JSON.stringify(formData));
-    }, [formData]);
 
 
     return (
