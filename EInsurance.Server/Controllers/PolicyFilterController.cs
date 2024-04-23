@@ -1,5 +1,6 @@
 ﻿using EInsurance.Server.Data;
 using EInsurance.Server.DTOs;
+using EInsurance.Server.Interfaces;
 using EInsurance.Server.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,13 @@ namespace web_scrapper.Controllers
     [ApiController]
     public class PolicyFilterController : ControllerBase
     {
-        public ApplicationDbContext _context { get; set; }
+        public ApplicationDbContext _context;
+        public IPolicyFilterInterface _policy;
 
-        public PolicyFilterController(ApplicationDbContext context)
+        public PolicyFilterController(ApplicationDbContext context, IPolicyFilterInterface policy)
         {
             _context = context;
+            _policy = policy;
         }
 
         [Route("/policy/filter")]
@@ -45,6 +48,8 @@ namespace web_scrapper.Controllers
                         & x.PolicyDetails.MaxEntryAge >= filters.Age
                         & x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
                     )
+                    .OrderBy(a => Guid.NewGuid())
+                    .Take(10)
                     .Select(x => new PoliciesDetailsDTO
                     {
                         PolicyDescription = x.PolicyDetails.PolicyDescription,
@@ -87,6 +92,8 @@ namespace web_scrapper.Controllers
                     & x.PolicyDetails.MaxEntryAge >= filters.Age
                     & x.PolicyDetails.PaymentMode.Contains(filters.PaymentMode)
                 )
+                .OrderBy(a => Guid.NewGuid())
+                .Take(10)
                 .Select(x => new PoliciesDetailsDTO
                 {
                     PolicyDescription = x.PolicyDetails.PolicyDescription,
@@ -111,6 +118,28 @@ namespace web_scrapper.Controllers
                 .ToList();
 
             return policies;
+        }
+
+        [Route("/async/filter")]
+        [HttpPost]
+        public async Task<ActionResult<ICollection<PoliciesDetailsDTO>>> FilterAsync(
+            PolicyFilteringParameters filters
+        )
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var result = await _policy.FilterPolicyDetails(filters);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
