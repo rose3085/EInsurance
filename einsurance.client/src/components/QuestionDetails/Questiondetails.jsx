@@ -101,7 +101,7 @@ function Questiondetails() {
                             <option value="Investment">Investment Plan</option>
                             <option value="Child">Child Plan</option>
                             <option value="High">High return Plan</option>
-                            <option value="Life Insurance">lifeinsurance</option>
+                            <option value="Life Insurance">Life Insurance</option>
                             <option value="Health">Health Insurance Plan</option>
                             <option value="Vehicle">Vehicle Insurance Plan</option>
                         </select>
