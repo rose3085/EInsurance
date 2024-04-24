@@ -61,28 +61,28 @@
 {
     margin-left:1rem;
     margin-top:1rem;
-    font-size: 17px;
+    
     font-weight: normal;
     width:240px;
-    color: rgb(97, 96, 96);
+   
 }
 
-/* .moreDetail
-{
-    background: conic-gradient(from 0deg #e5eff8,aliceblue);
-    width:220px;
-} */
-.detailButton
-{
-    margin-top:5rem;
-    margin-left:1.5rem;
-    width:120px;
-    height:45px;
-    font-size:17px;
-    font-weight:bold;
-    font-style:normal;
+.moreDetail {
+    
+    margin-top: 5rem;
+    margin-left: 1.5rem;
+}
+.detailButton {
+    display: flex;
+    padding:12px;
+   
+    width: 120px;
+    height: 45px;
+    font-size: 17px;
+    font-weight: bold;
+    font-style: normal;
     background-color: #008a8a;
-    color:white;
+    color: white;
     transition: background-color 0.3s ease;
     border-radius: 7px;
 }

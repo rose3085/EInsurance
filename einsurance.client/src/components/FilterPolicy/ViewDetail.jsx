@@ -57,12 +57,12 @@ const ViewDetail = () =>
                
         <div className="policyNameDiv">
             <div><img className="insuranceIcon"src={insuranceIcon}  alt=""height='45px' id='checked'/></div>
-                      <p className="policyName">{policyData.policyName}</p>
+                      <p className="policyName font-sans">{policyData.policyName}</p>
                </div>
                
             </div>
-            <div className='otherDetails'>
-            <div className='policyDescription'>
+                  <div className='otherDetails font-sans'>
+                      <div className='policyDescription font-sans '>
                           {policyData.policyDescription}
                </div>
                 <table>
@@ -118,13 +118,13 @@ const ViewDetail = () =>
       </table>
           
 
-                      {policyData.surrenderPolicy? <div className="policyType">
-            <div className="descriptionLable">Surrender Policy:</div>
+                      {policyData.surrenderPolicy? <div className="policyType ">
+                          <div className="descriptionLable font-sans">Surrender Policy:</div>
                           <div>{policyData.surrenderPolicy}</div>
         </div>:null}
         
                       {policyData.riskCommencementPeriod?<div className="risk">
-            <div className="descriptionLable">Risk Commencement Period:</div>
+                          <div className="descriptionLable font-sans">Risk Commencement Period:</div>
                           <div>{policyData.riskCommencementPeriod}</div>
         </div>: null }
 
@@ -139,20 +139,20 @@ const ViewDetail = () =>
         </div>:null}
 
             <div className="viewDetailsFooter">
-                          <div className="companyName">{policyData.companyName}
+                          <div className="companyName font-sans">{policyData.companyName}
                               {policyData.policyLaunchDate ? <div className="policyLaunchDate">
                                   <div>Policy Launch Date :</div> {policyData.dateWithoutTime}</div> : null}
                           
                 </div>
                 <div className="contactCompany">
-                    <p className="needHelp"> Need Help?</p>
+                              <p className="needHelp font-sans"> Need Help?</p>
                     <div className="contactNumber">
                         <div className="callImage"><img src={phoneCall}  alt=""height='25px' id='checked'/></div>
                                   <div>{policyData.phoneNumber}</div>
                     </div>
 
                     <div className="contactNumber">
-                        <div className="callImage"><img src={internet}  alt=""height='25px' id='checked'/></div>
+                                  <div className="callImage font-sans"><img src={internet}  alt=""height='25px' id='checked'/></div>
                                   <div>  <a href={policyData.website} target="_blank" rel="noopener noreferrer" >{policyData.website}</a></div>
                     </div>
                 </div>
