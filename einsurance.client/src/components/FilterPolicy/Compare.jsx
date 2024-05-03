@@ -1,7 +1,7 @@
 import './Compare.css';
 import filter from '../Icons/filter2.png';
 import {useState} from 'react';
-import Select from 'react-select';
+/*import Select from 'react-select';*/
 import { useNavigate } from 'react-router-dom';
 import { useResponse } from '../../context/ResponseContext';
 

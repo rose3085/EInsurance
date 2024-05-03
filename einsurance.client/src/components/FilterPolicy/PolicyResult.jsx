@@ -44,9 +44,7 @@ const PolicyResult = () => {
         <section className="policyFilterResultMain">
             <div className="filterWrap">
                 {responseData ? responseData.map((responseValue, index) => { 
-                    if (responseValue.policyTerm === 'Monthly') {
-                       const premium = (responseValue.premiumRate) / (responseValue.policyTerm * 12);
-                    }
+                   
                    /* const id = responseValue.id || generateRandomId();*/
                 return(
                 <div className="firstComponent" key={index}>
@@ -62,10 +60,19 @@ const PolicyResult = () => {
                         <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
 
-                            {responseValue.premiumRate ? <div className="minCover">Premium Rate:
-                             Rs {((responseValue.premiumRate / responseValue.policyTerm).toFixed(3))}
-
-                             </div>:  null}
+                            {responseValue.premiumRate ? (
+                                responseValue.policyTerm === 'Yearly' ? (
+                                    <div className="minCover">
+                                        Premium Rate: Rs {((responseValue.premiumRate).toFixed(3))}
+                                    </div>
+                                ) : (
+                                    responseValue.policyTerm === 'Monthly' ? (
+                                        <div className="minCover">
+                                            Premium Rate: Rs {(responseValue.premiumRate / 12).toFixed(3)}
+                                        </div>
+                                    ) : null
+                                )
+                            ) : null}
                         <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">
