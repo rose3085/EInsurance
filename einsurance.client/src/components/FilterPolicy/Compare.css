@@ -1,7 +1,7 @@
 .viewDetailsMain
 {
     
-    width:1000;
+   /* width:1000;*/
    
    
 }
@@ -12,25 +12,25 @@
     color:black;
     border: 1px solid;
     padding :8px;
-    margin-left:2rem;
+    margin-left:.5rem;
     background-color: var(--background-color);
     border-color : var(--background-color);
-    height:680px;
+    height:auto;
     width:300px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.viewDetailsComponents
-{
-    margin-top:2rem;
-    border:2px solid ;
+.viewDetailsComponents {
+    flex: 1;
+    margin-top: 2rem;
+    border: 2px solid;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    border-color:var(--background-color);
-    height:350px; width:933px;
-    margin-left:19rem;
-    margin-top:1rem;
-    margin-bottom:6rem;
+    border-color: var(--background-color);
+    height: 350px;
+    width: 200px;
+    margin-top: 1rem;
+    margin-bottom: 7rem;
 }
 .insuranceIcon
 {
@@ -85,10 +85,14 @@ text-align: center;
     margin-left:0.8rem;
 }
 
-.selectPolicy
-{
-    width:250px;
+.selectPolicy {
+    width: 250px;
     margin-top: 1rem;
+    margin-left: 0.5px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+
 }
 
 .line
