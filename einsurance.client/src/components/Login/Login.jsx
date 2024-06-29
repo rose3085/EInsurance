@@ -1,7 +1,7 @@
 import './Login.css';
 import {useState} from 'react';
 import {useNavigate,NavLink} from 'react-router-dom';
-import hand from '../Icons/happy.png';
+import hand from '/happy.png';
 import logo from '../Icons/EInsuranceLogo.png';
 import cancel from '../Icons/CancelButton.png';
 
@@ -38,7 +38,7 @@ const Login = () =>
             <div className="loginComponents">
                 <div className="loginLogo">
                 <div className="handsLogo">
-        <img src={hand}  alt="" height='100px' id='checked'/> 
+                            <img src='https://cdn.iconscout.com/icon/free/png-512/free-healthcare-1795430-1522795.png?f=webp&w=256'  alt="" height='100px' id='checked'/> 
         </div>
         <p className="quotes">The best time to get insurance <br/> is before you need it.</p>
                 </div>

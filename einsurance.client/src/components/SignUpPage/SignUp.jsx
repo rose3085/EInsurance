@@ -81,8 +81,8 @@ return (
             
             </div>
             <div className="signUpLogo">
-                    <div className="handLogo">
-                        <img src={hand}  alt="" height='180px' id='checked'/> 
+                    <div className="flex justify-center mt-32">
+                        <img src='https://cdn-icons-png.flaticon.com/128/10184/10184706.png'  alt="" height='800' id='checked'/> 
                     </div> 
                     <p className="quote">
                     Your best investment is in yourself.
