@@ -15,11 +15,13 @@ import FilterResult from './components/FilterPolicy/FilterResult.jsx';
 import ViewDetail from './components/FilterPolicy/ViewDetail.jsx';
 import About from './components/Aboutus/About.jsx';
 import Insurancepolicy from './components/Insurance/Insurancepolicy.jsx';
+import { ChakraProvider } from '@chakra-ui/react';
 import CompareResult from './components/FilterPolicy/CompareResult.jsx';
 import {
     QueryClient,
     QueryClientProvider,
 } from '@tanstack/react-query'
+import LoginVerify from './components/LoginVerify/LoginVerify.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -34,6 +36,7 @@ const router = createBrowserRouter(
             <Route path='FilterResult' element={<FilterResult />}></Route>
             <Route path='about' element={<About />}></Route>
             <Route path='insurance' element={<Insurancepolicy />}></Route>
+            <Route path='LoginVerify' element={<LoginVerify />}></Route>
             <Route path="/ViewDetail/:policyName" element={<ViewDetail />}></Route>
             {/* <Route path='CompareResult' element={<CompareResult/>}></Route> */}
         </Route>
@@ -46,8 +49,10 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+        <ChakraProvider>
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router} />
-        </QueryClientProvider>
+            </QueryClientProvider>
+        </ChakraProvider>
     </React.StrictMode>,
 )

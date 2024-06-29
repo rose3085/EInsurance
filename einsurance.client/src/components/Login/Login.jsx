@@ -4,11 +4,18 @@ import {useNavigate,NavLink} from 'react-router-dom';
 import hand from '/happy.png';
 import logo from '../Icons/EInsuranceLogo.png';
 import cancel from '../Icons/CancelButton.png';
-
+import { useForm } from "react-hook-form";
+import { useLogin } from '../../Services/api/authApi';
 const Login = () =>
 {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    //const [email, setEmail] = useState('');
+    //const [password, setPassword] = useState('');
+    const { register, handleSubmit } = useForm();
+
+    const { mutate } = useLogin();
+    const submitUserData = async (data) => {
+        mutate(data);
+    };
 
     
     const navigate = useNavigate();
@@ -45,17 +52,17 @@ const Login = () =>
             <div className="loginForm">
                 <p className="welcomeBack">Welcome Back</p>
                 <p className="loginInfo">Log in your account</p>
-                <form>
+                        <form onSubmit={handleSubmit(submitUserData)}>
                     <div className="email">
                         <label>
                             <input className="enterEmail" type="email" 
-                                placeholder="Enter your email" value={email} />
+                                        placeholder="Enter your email" {...register("email")} />
                         </label>
                     </div>
                     <div className="password">
                         <label>
                             <input className="enterPassword" type="password"
-                            placeholder="Enter your password" value={password}/>
+                                        placeholder="Enter your password" {...register("password")} />
                         </label>
                     </div>
                     <div className="submitButton">
