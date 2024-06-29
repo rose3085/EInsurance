@@ -36,7 +36,7 @@ function Questiondetails() {
             return;
         }
         //const apiUrl = `https://localhost:44361/policy/filter`;
-        const apiUrl = `https://localhost:7056/async/filter`;
+        const apiUrl = `http://localhost:5262/async/filter`;
         fetch(apiUrl, {
             method: 'POST', // Use the appropriate HTTP method
             headers: {
