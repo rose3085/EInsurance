@@ -3,7 +3,7 @@ import "./Summary.css";
 import Compare from './Compare';
 import filter from '../Icons/filter2.png';
 import { useResponse } from '../../context/ResponseContext';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Summary = () =>
 {
@@ -19,7 +19,7 @@ return(
     <section className="mainComponentSummary">
             <div className="summaryComponent">
                 <div className="filters">
-                    <div className="filterImg"><img src={filter}  alt="" height='23px' id='checked'/> </div>
+                   <Link to='/Questiondetails' ><div className="filterImg" ><img src={filter}  alt="" height='23px' id='checked'/> </div></Link>
                     <div><p className="filterText">Filter Results</p></div>
                 </div>
             <div className="line"> </div>

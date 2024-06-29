@@ -65,6 +65,8 @@
     border-radius: 4px;
     background-color: var(--background-color);
     color:black;
+    font-weight:normal;
+    font-size:16px;
 }
 .enterLastName{
     margin-top:0.5rem;
@@ -75,6 +77,8 @@
     border-radius: 4px;
     background-color: var(--background-color);
     color:black;
+    font-weight:normal;
+    font-size:16px;
 }
 .enterEmail
 {

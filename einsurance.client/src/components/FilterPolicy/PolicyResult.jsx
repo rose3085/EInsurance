@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import asianLife from '../Icons/AsianLife.png';
 import parbhuMahalaxmi from "../Icons/ParbhuMahalaxmi.jpg";
 import nepalLife from "../Icons/NepalLifeLogo.png";
@@ -16,19 +16,17 @@ const PolicyResult = () => {
     
     const location = useLocation();
     const formData = location.state?.formData || {};
+    
 
-    //const generateRandomId = () => {
-    //    // Generate a random ID 
-    //    return Math.random().toString(36).substr(2, 5) + '_' + Date.now().toString(36);
-    //}
     const handleNavigate = (policyName) => {
+        
         console.log("policy",policyName);
-       /* navigate(`/ViewDetail/${id}`);*/
+    
         navigate(`/ViewDetail/${encodeURIComponent(policyName)}`);
       
 
     }
-    //  const premium = responseValue.premiumRate / responseValue.policyTerm ;
+   
 
     const companyLogo = 
     {
@@ -36,13 +34,19 @@ const PolicyResult = () => {
         "Sun Nepal Life Insurance Company Limited":sunLife,
         "Nepal Life":nepalLife,
         "Asian Life Insurance":asianLife,
+
     }
+    
+   
     
 
     return (
         <section className="policyFilterResultMain">
             <div className="filterWrap">
                 {responseData ? responseData.map((responseValue, index) => { 
+                    if (responseValue.policyTerm === 'Monthly') {
+                       const premium = (responseValue.premiumRate) / (responseValue.policyTerm * 12);
+                    }
                    /* const id = responseValue.id || generateRandomId();*/
                 return(
                 <div className="firstComponent" key={index}>
@@ -57,17 +61,21 @@ const PolicyResult = () => {
                     </div>
                         <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
+
                             {responseValue.premiumRate ? <div className="minCover">Premium Rate:
-                             Rs {((responseValue.premiumRate / responseValue.policyTerm).toFixed(3))}</div>:  null}
+                             Rs {((responseValue.premiumRate / responseValue.policyTerm).toFixed(3))}
+
+                             </div>:  null}
                         <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
                     </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>
                     </div>
                 </div>
-                    );
+                    );   
                 }) : []}
-
+                  
+        
 
             </div>
 

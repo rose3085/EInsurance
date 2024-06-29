@@ -88,6 +88,15 @@ const ViewDetail = () =>
                                   <td>{policyData.policyType}</td>
                     
                     </tr>
+                    {policyData.premiumRate ?
+                    <tr>
+                     
+                       <td>Premium Rate</td>
+                                  <td>{policyData.premiumRate / policyData.policyTerm}</td> 
+                        
+                    </tr>
+
+                    : null} 
                     <tr>
                         <td>Min Entry Age</td>
                                   <td>{policyData.minEntryAge}</td>
@@ -108,7 +117,8 @@ const ViewDetail = () =>
                                   <td>{policyData.minCover}</td>
                         
                     </tr>
-                              {policyData.maxCover ? <tr>  {policyData.policyName ? <div className="">{policyData.policyName}</div>:null}
+                              {policyData.maxCover ? <tr>  
+                                {/* {policyData.policyName ? <div className="">{policyData.policyName}</div>:null} */}
                         <td>Max Cover</td>
                                   <td>{policyData.maxCover}</td>
                         
