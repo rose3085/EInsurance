@@ -2,6 +2,7 @@
 using EInsurance.Server.DTOs;
 using EInsurance.Server.Interfaces;
 using EInsurance.Server.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,18 +11,17 @@ namespace web_scrapper.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PolicyFilterController : ControllerBase
     {
         public ApplicationDbContext _context;
         public IPolicyFilterInterface _policy;
 
-        public PolicyFilterController(ApplicationDbContext context, IPolicyFilterInterface policy)
+        public PolicyFilterController(IPolicyFilterInterface policy)
         {
-            _context = context;
             _policy = policy;
         }
-        
-        
+
         [Route("/async/filter")]
         [HttpPost]
         public async Task<ActionResult<ICollection<PoliciesDetailsDTO>>> FilterAsync(
@@ -142,7 +142,5 @@ namespace web_scrapper.Controllers
 
         //    return policies;
         //}
-
-        
     }
 }
