@@ -11,7 +11,7 @@ namespace web_scrapper.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PolicyFilterController : ControllerBase
     {
         public ApplicationDbContext _context;
