@@ -1,4 +1,5 @@
 ﻿using EInsurance.Server.DTOs;
+using EInsurance.Server.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace EInsurance.Server.Interfaces
@@ -16,5 +17,10 @@ namespace EInsurance.Server.Interfaces
         Task<IdentityUser> FindUserByEmail(string email);
 
         ICollection<IdentityUser> GetAllUser();
+
+        Task<UserManagerResponse> AddPayment(string userId, int policyId, double amount);
+
+        // Task<ICollection<UserPaymentModel> GetUserPolicies(string userId);
+        Task<ICollection<UserPaymentModel>> GetUserPolicies(string userId);
     }
 }

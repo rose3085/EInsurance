@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const PaymentResult = () => {
     const location = useLocation();
@@ -17,6 +18,9 @@ const PaymentResult = () => {
     const userId = 1;  // Assuming userId is a constant or retrieved from context/state
     const productId = 1;  // Assuming productId is a constant or retrieved from context/state
 
+    const token = Cookies.get('token');
+    const bearerToken = `Bearer ${token}`;
+
     useEffect(() => {
         // Call the backend
         const fetchData = async () => {
@@ -26,9 +30,10 @@ const PaymentResult = () => {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': bearerToken,
                         },
                         body: JSON.stringify({
-                            userId,
+                            
                             productId,
                             transactionId,
                             totalAmount

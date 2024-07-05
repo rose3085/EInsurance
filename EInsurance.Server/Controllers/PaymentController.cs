@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 using EInsurance.Server.DTOs;
+using EInsurance.Server.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,7 +13,12 @@ namespace EInsurance.Server.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        public PaymentController() { }
+        private readonly IUserInterface _user;
+
+        public PaymentController(IUserInterface user)
+        {
+            _user = user;
+        }
 
         [Route("/payment/khalti")]
         [HttpPost]
@@ -54,7 +61,16 @@ namespace EInsurance.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> PaymentResponse([FromBody] PaymentResponseDTO model)
         {
-            return Ok(model);
+            string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest();
+            }
+            double amount = double.Parse(model.TotalAmount);
+            amount = amount / 100;
+            var result = await _user.AddPayment(userId, model.PolicyId, amount);
+
+            return Ok(result);
         }
     }
 }
