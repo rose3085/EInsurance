@@ -16,6 +16,12 @@ import ViewDetail from './components/FilterPolicy/ViewDetail.jsx';
 import About from './components/Aboutus/About.jsx';
 import Insurancepolicy from './components/Insurance/Insurancepolicy.jsx';
 import CompareResult from './components/FilterPolicy/CompareResult.jsx';
+import ButtonPage from './components/Payment/ButtonPage.jsx';
+import Khalti from './components/Payment/Khalti.jsx';
+import PaymentResult from './components/Payment/PaymentResult.jsx';
+
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +29,13 @@ const router = createBrowserRouter(
       <Route path='' element={<GetStartedPage/>}></Route>
       <Route path='Questiondetails' element={<Questiondetails/>}></Route>
       <Route path='Login' element={<Login/>}></Route>
-      <Route path='SignUp' element={<SignUp/>}></Route>
+          <Route path='SignUp' element={<SignUp />}></Route>
+          <Route path='Payment' element={<ButtonPage />}></Route>
+          <Route path='Khalti' element={<Khalti />}></Route>
+          <Route path='PaymentResult' element={<PaymentResult />}></Route>
+
+
+
       <Route path='EnterEmail' element={<EnterEmail/>}></Route>
       <Route path='EnterPhoneNumber' element={<EnterPhoneNumber/>}></Route>
       <Route path='EnterPassword' element={<EnterPassword/>}></Route>
