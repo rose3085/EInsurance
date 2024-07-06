@@ -38,7 +38,7 @@ export const useLogin = () => {
                     duration: 4000,
                     isClosable: true,
                 });
-                navigate("/LoginVerify");
+                navigate("/Khalti");
             } else {
                 toast({
                     title: 'Error Message',

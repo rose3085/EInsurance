@@ -1,8 +1,6 @@
 import './Login.css';
 import {useState} from 'react';
 import {useNavigate,NavLink} from 'react-router-dom';
-import hand from '/happy.png';
-import logo from '../Icons/EInsuranceLogo.png';
 import cancel from '../Icons/CancelButton.png';
 import { useForm } from "react-hook-form";
 import { useLogin } from '../../Services/api/authApi';

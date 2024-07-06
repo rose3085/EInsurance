@@ -26,14 +26,14 @@ const PaymentResult = () => {
         const fetchData = async () => {
             if (userId && productId && transactionId && totalAmount) {
                 try {
-                    const response = await fetch('http://localhost:5262/payment/response', {
+                    const response = await fetch(`https://localhost:44361/payment/response`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': bearerToken,
                         },
                         body: JSON.stringify({
-                            
+
                             productId,
                             transactionId,
                             totalAmount
@@ -59,17 +59,67 @@ const PaymentResult = () => {
 
     // Render the payment result information
     return (
-        <div>
-            <h1>Payment Result</h1>
-           
-            <p>Status: {status}</p>
-            <p>Transaction ID: {transactionId}</p>
-            
-            <p>Amount: {amount}</p>
-            <p>Mobile: {mobile}</p>
-            <p>Purchase Order ID: {purchaseOrderId}</p>
-            <p>Purchase Order Name: {purchaseOrderName}</p>
-            <p>Total Amount: {totalAmount}</p>
+        <div className='flex justify-center items-center '>
+            <div className='w-1/2 m-12 border-2 bg-white  shadow-md rounded-md '>
+                <div className='h-20 w-full bg-[#5D2E8C] rounded-t-md'>
+                    <div className='pt-8 pl-2 text-lg font-sans font-medium text-white'>
+                        Payment Result
+                    </div>
+                </div>
+                <div className="px-3 py-6">
+                    <div className="border-b border-gray-900/10 pb-2">
+                        <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Status" className="block text-base font-medium leading-3 text-gray-500 font-sans">Status:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {status}
+                                </div>
+                            </div>
+
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Transaction ID" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Transaction ID:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {transactionId}
+                                </div>
+                            </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Amount" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Amount:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {amount}
+                                </div>
+                            </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Mobile" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Mobile:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {mobile}
+                                </div>
+                            </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Purchase Order ID" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Purchase Order ID:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {purchaseOrderId}
+                                </div>
+                            </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Purchase Order Name" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Purchase Order Name:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {purchaseOrderName}
+                                </div>
+                            </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Total Amount" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Total Amount:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {totalAmount}
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     );
 };

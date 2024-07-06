@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+/*import App from './App.jsx'*/
 import './index.css';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom'
 import Layout from './Layout.jsx';
@@ -45,6 +45,7 @@ const router = createBrowserRouter(
           <Route path='FilterResult' element={<FilterResult />}></Route>
           <Route path='about' element={<About />}></Route>
           <Route path='insurance' element={<Insurancepolicy />}></Route>
+          <Route path='LoginVerify' element={<LoginVerify />}></Route>
           <Route path="/ViewDetail/:policyName" element={<ViewDetail/>}></Route>
           {/* <Route path='CompareResult' element={<CompareResult/>}></Route> */}
     </Route>

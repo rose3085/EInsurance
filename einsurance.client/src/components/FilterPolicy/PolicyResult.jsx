@@ -80,10 +80,10 @@ const PolicyResult = () => {
                         </div>
 
                         <div className="moreDetail">
-                            <button className="detailButtons" onClick={handleLoginPageChange} >Buy <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>
+                            <button className="detailButtons" onClick={handleLoginPageChange} >Buy </button>
                         </div>
                     <div className="moreDetail">
-                            <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details <img className="arrow" src={arrow} alt="" height='15px' id='checked' /></button>
+                            <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>
                     </div>
                 </div>
                     );   

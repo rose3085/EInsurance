@@ -4,6 +4,7 @@ import { useState } from 'react';
 /*import "nepali-datepicker-reactjs/dist/index.css";*/
 import { useResponse } from '../../context/ResponseContext';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from '@chakra-ui/react'
 
 function Questiondetails() {
     const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Questiondetails() {
     const [paymentMode, setPaymentMode] = useState("Yearly");
     const [coverAmount, setCoverAmount] = useState(5000);
     const [maturityBenefits, setMaturityBenefits] = useState("true");
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -31,11 +33,13 @@ function Questiondetails() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        setLoading(true);
+
         if (!policyType || !paymentMode) {
             console.error('PolicyType and PaymentMode are required.');
             return;
         }
-       /* const apiUrl = `https://localhost:44361/policy/filter`;*/
+        /* const apiUrl = `https://localhost:44361/policy/filter`;*/
         /*   const apiUrl = `https://localhost:7056/async/filter`;*/
         const apiUrl = `https://localhost:44361/async/filter`;
         fetch(apiUrl, {
@@ -141,9 +145,6 @@ function Questiondetails() {
 
 
 
-
-
-
                                 <div className="sm:col-span-3">
                                     <label htmlFor="Age" className="after:content-['*'] after:ml-1 after:text-red-500 block text-base font-medium leading-3 text-gray-900 font-sans">Age</label>
                                     <div className="mt-2">
@@ -158,14 +159,14 @@ function Questiondetails() {
                                              ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setTerms(e.target.value) }} />
                                     </div>
                                 </div>
-                                
+
 
                                 <div className="sm:col-span-3">
                                     <label htmlFor="paymentMode" className="after:content-['*'] after:ml-1 after:text-red-500 block text-base font-medium leading-2 text-gray-900 font-sans" >Payment Mode</label>
                                     <div className="mt-0">
                                         <select className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                              ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" onChange={(e) => { setPaymentMode(e.target.value) }} >
-                                            
+
                                             <option value="Yearly">Yearly</option>
                                             <option value="Half Yearly">Half-yearly</option>
                                             <option value="Quarterly">Quarterly</option>
@@ -205,7 +206,13 @@ function Questiondetails() {
 
                     <div className="m-2 flex items-center justify-end gap-x-6">
 
-                        <button onClick={handleSubmit} className="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">Submit</button>
+                        <button onClick={handleSubmit} className="inline-flex text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg">
+                            {loading ? <Spinner
+
+                                emptyColor='gray.200'
+                                color='blue.500'
+
+                            /> : 'Submit'}</button>
                     </div>
 
 
