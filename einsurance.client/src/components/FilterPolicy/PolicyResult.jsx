@@ -26,9 +26,9 @@ const PolicyResult = () => {
       
 
     }
-    const handleLoginPageChange = () => {
-        navigate("/Login");
-    }
+    const handleLoginPageChange = (minCover) => {
+        navigate("/Login", { state: { minCover } });
+    };
    
 
     const companyLogo = 
@@ -80,7 +80,7 @@ const PolicyResult = () => {
                         </div>
 
                         <div className="moreDetail">
-                            <button className="detailButtons" onClick={handleLoginPageChange} >Buy </button>
+                            <button className="detailButtons" onClick={() => handleLoginPageChange(responseValue.minCover)} >Buy </button>
                         </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>

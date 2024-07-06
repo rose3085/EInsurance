@@ -42,7 +42,7 @@ const ViewDetail = () => {
         return <div>Policy not found!</div>;
     }
 
-    const handleCancelButton = (e) => {
+    const handleCancelButton = () => {
         // e.preventDefault();
         // navigate("/FilterResult");
 

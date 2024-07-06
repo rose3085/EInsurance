@@ -1,6 +1,6 @@
 import './Login.css';
 import {useState} from 'react';
-import {useNavigate,NavLink} from 'react-router-dom';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import cancel from '../Icons/CancelButton.png';
 import { useForm } from "react-hook-form";
 import { useLogin } from '../../Services/api/authApi';
@@ -9,10 +9,13 @@ const Login = () =>
     //const [email, setEmail] = useState('');
     //const [password, setPassword] = useState('');
     const { register, handleSubmit } = useForm();
+    const location = useLocation();
+    const { minCover } = location.state || {};
 
     const { mutate } = useLogin();
     const submitUserData = async (data) => {
         mutate(data);
+        navigate('/khalti', { state: { minCover } });
     };
 
     

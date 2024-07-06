@@ -26,7 +26,8 @@ export const useLogin = () => {
     const toast = useToast();
     return useMutation({
         mutationFn: loginAdmin,
-        onSuccess: (data) => {
+        onSuccess: (data, variables) => {
+            const { minCover } = variables; 
             if (data.isSuccess && data.message) {
                 Cookies.set("token", data.message);
                 Cookies.set("email", data.user?.email || "");
@@ -38,7 +39,7 @@ export const useLogin = () => {
                     duration: 4000,
                     isClosable: true,
                 });
-                navigate("/Khalti");
+                //navigate(`/Khalti`);
             } else {
                 toast({
                     title: 'Error Message',
