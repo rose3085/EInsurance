@@ -1,0 +1,9 @@
+import React from 'react';
+
+function compareandview() {
+  return (
+    <p>Hello world!</p>
+  );
+}
+
+export default compareandview;

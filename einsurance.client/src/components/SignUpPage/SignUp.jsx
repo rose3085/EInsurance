@@ -5,12 +5,24 @@ import logo from '../Icons/EInsuranceLogo.png';
 import cancel from '../Icons/CancelButton.png';
 import {useNavigate} from 'react-router-dom';
 import right from '../Icons/right.png';
+import { useForm } from 'react-hook-form';
+import { useSignUp } from '../../Services/api/authApi';
 
 const SignUp = () =>
 {
 
     const [name, setName] = useState('');
+    const { register, handleSubmit } = useForm();
 
+    const { mutate } = useSignUp();
+
+    const SignUpRegisterAdmin = async (data) => {
+        if (data.password !== data.confirmPassword) {
+            console.log("Passwords do not match");
+            return;
+        }
+        mutate(data);
+    };
     const navigate = useNavigate();
     const handlePageChange = (event) =>
     {
@@ -47,33 +59,59 @@ return (
                 <div className="signUpForm">
                 <p className="welcome">Welcome </p>
                 <p className="createAccountInfo">Create an account</p>
-            <form className="signUp">
-                <div className="name">
-                    <label>
+                    <form className="signUp" onSubmit={handleSubmit(SignUpRegisterAdmin)}>
+                        <div className="name">
+                            <label className="mr-2">UserName</label>
                         <input className="enterFirstName" type="text" 
-                         placeholder="Enter your First Name" value={name}/>
-                    </label>
+                                placeholder="Enter your Name" {...register("name", { required: "name is requried" })}/>
+                    
                 </div>
                 <div className="name">
-                    <label>
-                        <input className="enterLastName" type="text" 
-                         placeholder="Enter your Last Name" value={name}/>
-                    </label>
-                </div>
+                            <label className="mr-5">Email</label>
+                        <input className="enterLastName ml-7" type="email" 
+                                placeholder="Enter your email" {...register("email", { required: "Email is requried" })}/>
+                    
+                        </div>
+                        <div className="name">
+                            <label className="mr-4">Password</label>
+                                <input className="enterLastName" type="password"
+                                placeholder="6 characters| 1 Capital |1 symbol"  {...register("password", {
+                                    required: "Password is requried.",
+                                })} />
+                            
+                        </div>
+                        <div className="name">
+                            <label className="mr-10 ml-16">Confirm password:</label>
+                                <input className="enterLastName ml-24" type="password"
+                                placeholder="6 characters| 1 Capital |1 symbol" {...register("confirmPassword", {
+                                    required: "confirmPassword is requried.",
+                                })} />
+                            
+                        </div>
+                        <div className="name">
+                            <label className="mr-6">Contact</label>
+                            <input className="enterLastName" type="number"
+                                placeholder="Enter your Contact Number"  {...register("contactInformation")} />
+
+                        </div>
+                        
                
                 <div className="nextPage">
                     {/* <button className="nextButton"onClick={handlePageChange}>Next</button> */}
                     
-                    <div><button className="right2" onClick={handlePageChange}>
-                    <img src={right}  alt="" height='20px' id='checked'/> 
+                            <div><button className="right2" > {/*onClick={handlePageChange}*/}
+                   {/* <img src={right}  alt="" height='20px' id='checked'/> */}
 
                     </button></div>
-                </div>
+                        </div>
+                        <div className="submitButton">
+                            <button className="button" type="submit">Continue</button>
+                        </div>
             </form>
 
             
             <div className="toggleSignUp">
-                <div className="lines"> </div>
+                <div className="lines mt-4 ml-24"> </div>
                     <p className="alreadyAccount"> Already have an account?
                     <div className="navLogin" onClick={handleLoginPageChange}>Login</div>
                     </p>
@@ -81,8 +119,8 @@ return (
             
             </div>
             <div className="signUpLogo">
-                    <div className="handLogo">
-                        <img src={hand}  alt="" height='180px' id='checked'/> 
+                    <div className="flex justify-center mt-32">
+                        <img src='https://cdn-icons-png.flaticon.com/128/10184/10184706.png'  alt="" height='800' id='checked'/> 
                     </div> 
                     <p className="quote">
                     Your best investment is in yourself.

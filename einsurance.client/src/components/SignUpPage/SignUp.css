@@ -12,9 +12,9 @@
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     border-color:var(--background-color);
-    height:560px; width:900px;
+    height:800px; width:900px;
     margin-left:9rem;
-    margin-top:1rem;
+   /* margin-top:1rem;*/
     text-align: center;
    
 }
@@ -51,13 +51,13 @@
     font-style:inherit;
     font-family: Arial, Helvetica, sans-serif;
     color:var(--text-color2);
-    margin-top:4rem;
+  /*  margin-top:4rem;*/
     margin-left:-4rem;
 
 }
 .enterFirstName
 {
-    margin-top:1rem;
+    margin-top:2px;
     width:250px;
     padding: 8px;
     box-sizing: border-box;
@@ -69,7 +69,7 @@
     font-size:16px;
 }
 .enterLastName{
-    margin-top:0.5rem;
+    margin-top:2px;
     width:250px;
     padding: 8px;
     box-sizing: border-box;
@@ -82,7 +82,7 @@
 }
 .enterEmail
 {
-    margin-top:0.5rem;
+    margin-top:2px;
     width:250px;
     padding: 8px;
     box-sizing: border-box;

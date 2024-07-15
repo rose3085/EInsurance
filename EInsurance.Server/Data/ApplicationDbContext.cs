@@ -16,5 +16,6 @@ namespace EInsurance.Server.Data
         public DbSet<AddonPackages> addonPackages { get; set; }
 
         public DbSet<PolicyTerms> policyTerms { get; set; }
+        public DbSet<UserPaymentModel> UserPayments { get; set; }
     }
 }

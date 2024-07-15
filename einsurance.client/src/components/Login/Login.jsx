@@ -1,14 +1,22 @@
 import './Login.css';
 import {useState} from 'react';
-import {useNavigate,NavLink} from 'react-router-dom';
-import hand from '../Icons/happy.png';
-import logo from '../Icons/EInsuranceLogo.png';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import cancel from '../Icons/CancelButton.png';
-
+import { useForm } from "react-hook-form";
+import { useLogin } from '../../Services/api/authApi';
 const Login = () =>
 {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    //const [email, setEmail] = useState('');
+    //const [password, setPassword] = useState('');
+    const { register, handleSubmit } = useForm();
+    const location = useLocation();
+    const { minCover } = location.state || {};
+
+    const { mutate } = useLogin();
+    const submitUserData = async (data) => {
+        mutate(data);
+        navigate('/khalti', { state: { minCover } });
+    };
 
     
     const navigate = useNavigate();
@@ -38,24 +46,24 @@ const Login = () =>
             <div className="loginComponents">
                 <div className="loginLogo">
                 <div className="handsLogo">
-        <img src={hand}  alt="" height='100px' id='checked'/> 
+                            <img src='https://cdn.iconscout.com/icon/free/png-512/free-healthcare-1795430-1522795.png?f=webp&w=256'  alt="" height='100px' id='checked'/> 
         </div>
         <p className="quotes">The best time to get insurance <br/> is before you need it.</p>
                 </div>
             <div className="loginForm">
                 <p className="welcomeBack">Welcome Back</p>
                 <p className="loginInfo">Log in your account</p>
-                <form>
+                        <form onSubmit={handleSubmit(submitUserData)}>
                     <div className="email">
                         <label>
                             <input className="enterEmail" type="email" 
-                                placeholder="Enter your email" value={email} />
+                                        placeholder="Enter your email" {...register("email")} />
                         </label>
                     </div>
                     <div className="password">
                         <label>
                             <input className="enterPassword" type="password"
-                            placeholder="Enter your password" value={password}/>
+                                        placeholder="Enter your password" {...register("password")} />
                         </label>
                     </div>
                     <div className="submitButton">

@@ -1,9 +1,12 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using EInsurance.Server.Data;
 using EInsurance.Server.DTOs;
 using EInsurance.Server.Interfaces;
+using EInsurance.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace EInsurance.Server.Repositories
@@ -12,11 +15,51 @@ namespace EInsurance.Server.Repositories
     {
         private readonly UserManager<IdentityUser> _userManger;
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _context;
 
-        public UserRepository(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public UserRepository(
+            UserManager<IdentityUser> userManager,
+            IConfiguration configuration,
+            ApplicationDbContext context
+        )
         {
             _userManger = userManager;
             _configuration = configuration;
+            _context = context;
+        }
+
+        public async Task<UserManagerResponse> AddPayment(
+            string userId,
+            int policyId,
+            double amount
+        )
+        {
+            var user = await _userManger.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return new UserManagerResponse
+                {
+                    IsSuccess = false,
+                    Message = "User Doesnot Exist"
+                };
+            }
+            var policyDetail = _context.policyDetails.Where(x => x.Id == policyId).First();
+            var userPayment = new UserPaymentModel
+            {
+                User = user,
+                PaidAmount = amount,
+                PurchasedDate = DateTime.Now,
+                PolicyDetail = policyDetail,
+            };
+
+            await _context.UserPayments.AddAsync(userPayment);
+            var result = _context.SaveChanges();
+            if (result > 0)
+            {
+                return new UserManagerResponse { IsSuccess = true, Message = "Payment Added" };
+            }
+
+            return new UserManagerResponse { IsSuccess = false, Message = "try Again" };
         }
 
         public Task<UserManagerResponse> ConfirmEmailAsync(string userId, string token)
@@ -43,6 +86,15 @@ namespace EInsurance.Server.Repositories
             var users = _userManger.Users.ToList();
 
             return users;
+        }
+
+        public async Task<ICollection<UserPaymentModel>> GetUserPolicies(string userId)
+        {
+            var result = await _context
+                .UserPayments.Include(x => x.PolicyDetail)
+                .Where(x => x.User.Id == userId)
+                .ToListAsync();
+            return result;
         }
 
         public async Task<UserManagerResponse> LoginUserAsync(LoginDTO model)

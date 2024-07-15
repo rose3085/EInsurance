@@ -15,7 +15,7 @@
     color:black;
     border: 1px solid;
     padding :8px;
-    margin-left:2rem;
+    margin-left:0.5rem;
     background-color: var(--background-color);
     border-color : var(--background-color);
     height:540px;
