@@ -8,6 +8,10 @@ namespace EInsurance.Server.Interfaces
             PolicyFilteringParameters filters
         );
 
+        public Task<ICollection<PoliciesDetailsDTO>> FilterPolicyDetailsSortByAsec(
+            PolicyFilteringParameters filters
+        );
+
         //public
     }
 }

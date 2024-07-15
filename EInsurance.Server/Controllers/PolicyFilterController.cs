@@ -1,5 +1,6 @@
 ﻿using EInsurance.Server.Data;
 using EInsurance.Server.DTOs;
+using EInsurance.Server.Helper;
 using EInsurance.Server.Interfaces;
 using EInsurance.Server.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -35,6 +36,30 @@ namespace web_scrapper.Controllers
                     return BadRequest();
                 }
                 var result = await _policy.FilterPolicyDetails(filters);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [Route("/async/SortByAsec")]
+        [HttpPost]
+        public async Task<ActionResult<ICollection<PoliciesDetailsDTO>>> FilterAsyncSortByAsec(
+            PolicyFilteringParameters filters
+        )
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var result = await _policy.FilterPolicyDetailsSortByAsec(filters);
+
+                //SortingAlgorithms.MergeSort(result, true);
 
                 return Ok(result);
             }
