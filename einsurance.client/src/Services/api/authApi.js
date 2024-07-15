@@ -102,8 +102,8 @@ export const useSignUp = () => {
     });
 };
 
-//const Logout = () => {
-//    Cookies.remove("token");
-//    Cookies.remove("email");
-//    localStorage.removeItem("email");
-//};
+export const Logout = () => {
+    Cookies.remove("token");
+    Cookies.remove("email");
+    localStorage.removeItem("email");
+};

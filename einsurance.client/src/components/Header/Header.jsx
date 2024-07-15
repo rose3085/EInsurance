@@ -1,8 +1,39 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Logo from './Image/Logo.png'
+import Logo from './Image/Logo.png';
+import { useToast } from '@chakra-ui/react';
+import {
+    AlertDialog,
+    AlertDialogBody,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogOverlay,
+    Button, useDisclosure, Avatar, AvatarGroup,
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { Logout } from '../../Services/api/authApi';
+
 
 export default function Header() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const cancelRef = React.useRef();
+    const navigate = useNavigate();
+    const toast = useToast();
+
+    const handleLogout = () => {
+        Logout();
+        navigate("/SignUp");
+        toast({
+            title: 'LogOut Message',
+            description: "Successfully LogOut",
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+        });
+        onClose();
+       
+    };
     return (
         <header className="shadow sticky z-50 top-0 ">
             <nav className="bg-white border-gray-200 px-4 lg:px-2 py-1">
@@ -51,18 +82,52 @@ export default function Header() {
 
 
                             </ul>
-                            <Link
-                            to="Login"
-                            className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                        >
-                            Log in
-                        </Link>
+                        {/*    <Link*/}
+                        {/*    to="Login"*/}
+                        {/*    className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"*/}
+                        {/*>*/}
+                        {/*    Log in*/}
+                        {/*</Link>*/}
                         <Link
                             to="SignUp"
                             className="text-white text-base bg-[#008a8a] hover:bg-[#0EAA42] focus:ring-4 focus:ring-[#a1a2e6] font-medium rounded-lg  px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                         >
                             Sign in
-                        </Link>
+                            </Link>
+                            {/*<Button colorScheme='red' onClick={onOpen}>*/}
+                            {/*    Delete Customer*/}
+                            {/*</Button>*/}
+                            <AvatarGroup spacing='1rem' onClick={onOpen}>
+                               {/* <Avatar bg='red.500' icon={<AiOutlineUser fontSize='1.5rem' />} />*/}
+                                <Avatar bg='gray.500' size='md' />
+                            </AvatarGroup>
+
+                            <AlertDialog
+                                isOpen={isOpen}
+                                leastDestructiveRef={cancelRef}
+                                onClose={onClose}
+                            >
+                                <AlertDialogOverlay>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                            Log Out 
+                                        </AlertDialogHeader>
+
+                                        <AlertDialogBody>
+                                            Are you sure? You can't undo this action afterwards.
+                                        </AlertDialogBody>
+
+                                        <AlertDialogFooter>
+                                            <Button ref={cancelRef} onClick={onClose}>
+                                                Cancel
+                                            </Button>
+                                            <Button colorScheme='red' onClick={handleLogout} ml={3}>
+                                                LogOut
+                                            </Button>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialogOverlay>
+                            </AlertDialog>
                         </div>
                         
                     </div>
