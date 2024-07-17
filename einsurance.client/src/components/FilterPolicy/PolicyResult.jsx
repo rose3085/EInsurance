@@ -12,7 +12,7 @@ import { useResponse } from '../../context/ResponseContext';
 
 
 const PolicyResult = () => {
-    
+    const [premiumAmount, setPremiumAmount] = useState();
     const { responseData } = useResponse();
     const navigate = useNavigate();
     
@@ -75,19 +75,53 @@ const PolicyResult = () => {
                         <div className="policy"><div className="policyNamees">Policy Name: {responseValue.policyName}</div>
                             <div className="minCover">Company Name: {responseValue.companyName} </div>
 
-                            {responseValue.premiumRate ? (
-                                responseValue.policyTerm === 'Yearly' ? (
+                            {responseValue.premiumRate &&
+                            (
+                                responseValue.paymentMode === 'Yearly' ? (
                                     <div className="minCover">
-                                        Premium Rate: Rs {((responseValue.premiumRate).toFixed(3))}
+                                        Premium Rate: Rs {((responseValue.premiumRate))}
                                     </div>
-                                ) : (
-                                    responseValue.policyTerm === 'Monthly' ? (
+                                ) : null
+                            ) 
+                        }
+    
+      
+                             {responseValue.premiumRate &&
+                                  (  responseValue.paymentMode === 'Monthly' ? (
                                         <div className="minCover">
-                                            Premium Rate: Rs {(responseValue.premiumRate / 12).toFixed(3)}
+                                            Premium Rate: Rs {(responseValue.premiumRate / 12)}
                                         </div>
                                     ) : null
                                 )
-                            ) : null}
+                                }
+
+
+
+                                {responseValue.premiumRate &&
+                                (
+                                    responseValue.paymentMode === 'Half Yearly' ? (
+                                        <div className="minCover">
+                                            Premium Rate: Rs {(responseValue.premiumRate / 2)}
+                                        </div>
+                                    ) : null
+                                ) }
+
+                            {responseValue.premiumRate &&
+                                (
+                                    responseValue.paymentMode === 'Quarterly' ? (
+                                        <div className="minCover">
+                                            Premium Rate: Rs {(responseValue.premiumRate / 4)}
+                                            {/* setPremiumAmount((responseValue.premiumRate / 4)); */}
+                                        </div>
+                                    ) : null
+                                )
+                            }
+                           
+
+                          
+
+
+                            {/* {responseValue.premiumRate } */}
                         <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
                         </div>
 
