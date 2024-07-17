@@ -15,16 +15,20 @@ const PaymentResult = () => {
     const purchaseOrderId = queryParams.get('purchase_order_id');
     const purchaseOrderName = queryParams.get('purchase_order_name');
     const totalAmount = queryParams.get('total_amount');
-    const userId = 1;  // Assuming userId is a constant or retrieved from context/state
-    const productId = 1;  // Assuming productId is a constant or retrieved from context/state
+   // const userId = 1;  // Assuming userId is a constant or retrieved from context/state
+  //  const productId = 1;  // Assuming productId is a constant or retrieved from context/state
 
     const token = Cookies.get('token');
+    const productId = Number(Cookies.get('policyId'));
+
+    //const token = Cookies.get('');
+
     const bearerToken = `Bearer ${token}`;
 
     useEffect(() => {
         // Call the backend
         const fetchData = async () => {
-            if (userId && productId && transactionId && totalAmount) {
+            if ( productId && transactionId && totalAmount) {
                 try {
                     const response = await fetch(`https://localhost:44361/payment/response`, {
                         method: 'POST',

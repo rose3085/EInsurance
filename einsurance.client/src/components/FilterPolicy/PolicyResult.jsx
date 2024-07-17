@@ -33,11 +33,12 @@ const PolicyResult = () => {
 
    
 
-    const handleLoginPageChange = (premiumRate,policyName) => {
+    const handleLoginPageChange = (premiumRate, policyName, policyId) => {
         debugger;
         const token = Cookies.get('token');
         console.log(token);
-        console.log(premiumRate);
+        Cookies.set("policyId", policyId);
+
 
         if(token === undefined || token ===null)
         {
@@ -98,7 +99,7 @@ const PolicyResult = () => {
 
                         <div className="moreDetail">
                             <button className="detailButtons" 
-                                onClick={() => handleLoginPageChange(responseValue.premiumRate,responseValue.policyName)} >Buy </button>
+                                onClick={() => handleLoginPageChange(responseValue.premiumRate, responseValue.policyName, responseValue.id)} >Buy </button>
                         </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>
