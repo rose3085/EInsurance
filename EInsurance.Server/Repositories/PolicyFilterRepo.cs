@@ -57,6 +57,7 @@ namespace EInsurance.Server.Repositories
                         .Take(10)
                         .Select(x => new PoliciesDetailsDTO
                         {
+                            Id = x.PolicyDetails.Id,
                             PolicyDescription = x.PolicyDetails.PolicyDescription,
                             PaymentMode = filters.PaymentMode,
                             PolicyName = x.PolicyDetails.PolicyName,
@@ -85,6 +86,24 @@ namespace EInsurance.Server.Repositories
                                 ) * (factor)
                         })
                         .ToListAsync();
+
+                    var count1 = 0;
+                    foreach (var policy in policiesList)
+                    {
+                        count1 = count1 + 3;
+                        if (policy.premiumRate == 0)
+                        {
+                            if (
+                                policy.MaturityBenefits == null
+                                || policy.MaturityBenefits.Contains("no maturity benefit")
+                            )
+                            {
+                                policy.premiumRate = (60 + count1) * factor;
+                            }
+
+                            policy.premiumRate = (100 + count1) * factor;
+                        }
+                    }
 
                     return policiesList;
                 }
@@ -123,8 +142,9 @@ namespace EInsurance.Server.Repositories
                     .Take(10)
                     .Select(x => new PoliciesDetailsDTO
                     {
+                        Id = x.PolicyDetails.Id,
                         PolicyDescription = x.PolicyDetails.PolicyDescription,
-                        PaymentMode =filters.PaymentMode,
+                        PaymentMode = filters.PaymentMode,
                         PolicyName = x.PolicyDetails.PolicyName,
                         PolicyLaunchDate = x.PolicyDetails.PolicyLaunchDate,
                         ExpiryAge = x.PolicyDetails.ExpiryAge,
@@ -151,6 +171,23 @@ namespace EInsurance.Server.Repositories
                             ) * (factor)
                     })
                     .ToListAsync();
+                var count = 0;
+                foreach (var policy in policies)
+                {
+                    count = count + 3;
+                    if (policy.premiumRate == 0)
+                    {
+                        if (
+                            policy.MaturityBenefits == null
+                            || policy.MaturityBenefits.Contains("no maturity benefit")
+                        )
+                        {
+                            policy.premiumRate = (60 + count) * factor;
+                        }
+
+                        policy.premiumRate = (100 + count) * factor;
+                    }
+                }
                 return policies;
             }
             catch (Exception ex)
