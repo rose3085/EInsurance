@@ -103,6 +103,18 @@ namespace EInsurance.Server.Repositories
 
                             policy.premiumRate = (100 + count1) * factor;
                         }
+                        if (policy.PaymentMode == "Monthly")
+                        {
+                            policy.premiumRate = policy.premiumRate / 12;
+                        }
+                        if (policy.PaymentMode == "Quaterly")
+                        {
+                            policy.premiumRate = policy.premiumRate / 4;
+                        }
+                        if (policy.PaymentMode == "Half Yearly")
+                        {
+                            policy.premiumRate = policy.premiumRate / 2;
+                        }
                     }
 
                     return policiesList;
