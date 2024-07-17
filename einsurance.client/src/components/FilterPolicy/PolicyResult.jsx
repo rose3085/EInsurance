@@ -19,6 +19,7 @@ const PolicyResult = () => {
     const location = useLocation();
     const formData = location.state?.formData || {};
    
+    
 
     const handleNavigate = (policyName) => {
         
@@ -28,17 +29,22 @@ const PolicyResult = () => {
       
 
     }
-    const handleLoginPageChange = (minCover,policyName) => {
-        //debugger;
+
+
+   
+
+    const handleLoginPageChange = (premiumRate,policyName) => {
+        debugger;
         const token = Cookies.get('token');
         console.log(token);
+        console.log(premiumRate);
 
         if(token === undefined || token ===null)
         {
-            navigate("/Login", { state: { minCover} });
+            navigate("/Login", { state: { premiumRate,policyName } });
         }
         else{
-            navigate("/Khalti", { state: { minCover, policyName } });
+            navigate("/Khalti", { state: { premiumRate, policyName } });
         }
     };
    
@@ -77,57 +83,22 @@ const PolicyResult = () => {
 
                             {responseValue.premiumRate &&
                             (
-                                responseValue.paymentMode === 'Yearly' ? (
+                               
                                     <div className="minCover">
                                         Premium Rate: Rs {((responseValue.premiumRate))}
                                     </div>
-                                ) : null
+                               
                             ) 
                         }
     
       
-                             {responseValue.premiumRate &&
-                                  (  responseValue.paymentMode === 'Monthly' ? (
-                                        <div className="minCover">
-                                            Premium Rate: Rs {(responseValue.premiumRate / 12)}
-                                        </div>
-                                    ) : null
-                                )
-                                }
-
-
-
-                                {responseValue.premiumRate &&
-                                (
-                                    responseValue.paymentMode === 'Half Yearly' ? (
-                                        <div className="minCover">
-                                            Premium Rate: Rs {(responseValue.premiumRate / 2)}
-                                        </div>
-                                    ) : null
-                                ) }
-
-                            {responseValue.premiumRate &&
-                                (
-                                    responseValue.paymentMode === 'Quarterly' ? (
-                                        <div className="minCover">
-                                            Premium Rate: Rs {(responseValue.premiumRate / 4)}
-                                            {/* setPremiumAmount((responseValue.premiumRate / 4)); */}
-                                        </div>
-                                    ) : null
-                                )
-                            }
-                           
-
-                          
-
-
-                            {/* {responseValue.premiumRate } */}
+                      {/* {responseValue.premiumRate } */}
                         <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
                         </div>
 
                         <div className="moreDetail">
                             <button className="detailButtons" 
-                                onClick={() => handleLoginPageChange(responseValue.minCover,responseValue.policyName)} >Buy </button>
+                                onClick={() => handleLoginPageChange(responseValue.premiumRate,responseValue.policyName)} >Buy </button>
                         </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>

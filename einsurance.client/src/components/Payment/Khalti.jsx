@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 
 const PaymentButton = () => {
     const location = useLocation();
-    const { minCover, policyName } = location.state || {};
+    const { premiumRate, policyName } = location.state || {};
     const [loading, setLoading] = useState(false);
     const { responseData } = useResponse();
     const [error, setError] = useState('');
@@ -105,7 +105,7 @@ const PaymentButton = () => {
                                                 type="text"
                                                 name="amount-in-paisa"
                                                 className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none focus:ring-[#0065ff] sm:text-sm sm:leading-6"
-                                                defaultValue={minCover} // Populate with minCover value
+                                                defaultValue={premiumRate} // Populate with minCover value
                                                 readOnly // Prevent direct user input
                                                 {...register("amountInPaisa")}
                                             />
