@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { useResponse } from '../../context/ResponseContext';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from '@chakra-ui/react'
+import Cookies from 'js-cookie';
+
 
 function Questiondetails() {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ function Questiondetails() {
 
     /*const [dateofbirth, setDateOfBirth] = useState("");*/
     const [policyType, setPolicyType] = useState("Investment Plan");
+    const [userName, setUserName] = useState("");
     const [age, setAge] = useState(24);
     const [terms, setTerms] = useState(2);
     const [paymentMode, setPaymentMode] = useState("Yearly");
@@ -39,6 +42,10 @@ function Questiondetails() {
             console.error('PolicyType and PaymentMode are required.');
             return;
         }
+
+        Cookies.set("userName", userName);
+
+
         /* const apiUrl = `https://localhost:44361/policy/filter`;*/
         /*   const apiUrl = `https://localhost:7056/async/filter`;*/
         const apiUrl = `https://localhost:44361/async/filter`;
@@ -126,7 +133,8 @@ function Questiondetails() {
                                     <label htmlFor="first-name" className="block text-base font-medium leading-3 text-gray-900 font-sans">User name</label>
                                     <div className="mt-2">
                                         <input type="text" name="first-name" id="first-name" autoComplete="given-name" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
-                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6" />
+                                             ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none  focus:ring-[#0065ff] sm:text-sm sm:leading-6"
+                                            onChange={(e) => { setUserName(e.target.value) }} />
                                     </div>
                                 </div>
 

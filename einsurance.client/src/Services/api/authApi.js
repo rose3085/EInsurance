@@ -121,5 +121,7 @@ export const useSignUp = () => {
 export const Logout = (queryClient) => {
     Cookies.remove("token");
     Cookies.remove("email");
+    Cookies.remove("userName");
+
     queryClient.setQueryData('auth', { isLoggedIn: false, user: null });
 };
