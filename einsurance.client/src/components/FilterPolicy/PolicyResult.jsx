@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 //import nepalLife from "../Icons/NepalLifeLogo.png";
 //import sunLife from "../Icons/SunlifeInsurance.jpg";
 import './PolicyResult.css';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import arrow from '../Icons/rightArrow.png';
 import { useLocation } from 'react-router-dom';
@@ -11,12 +12,13 @@ import { useResponse } from '../../context/ResponseContext';
 
 
 const PolicyResult = () => {
+    
     const { responseData } = useResponse();
     const navigate = useNavigate();
     
     const location = useLocation();
     const formData = location.state?.formData || {};
-    
+   
 
     const handleNavigate = (policyName) => {
         
@@ -27,7 +29,17 @@ const PolicyResult = () => {
 
     }
     const handleLoginPageChange = (minCover) => {
-        navigate("/Login", { state: { minCover } });
+        debugger;
+        const token = Cookies.get('token');
+        console.log(token);
+
+        if(token === undefined || token ===null)
+        {
+            navigate("/Login", { state: { minCover } });
+        }
+        else{
+        navigate("/Khalti", { state: { minCover } });
+        }
     };
    
 
@@ -80,7 +92,8 @@ const PolicyResult = () => {
                         </div>
 
                         <div className="moreDetail">
-                            <button className="detailButtons" onClick={() => handleLoginPageChange(responseValue.minCover)} >Buy </button>
+                            <button className="detailButtons" 
+                            onClick={() => handleLoginPageChange(responseValue.minCover)} >Buy </button>
                         </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>
