@@ -40,6 +40,6 @@
         // public string PolicyTerm { get; set; } //can be multiple
         public int PolicyTerm { get; set; }
 
-        public float premiumRate { get; set; }
+        public int premiumRate { get; set; }
     }
 }
