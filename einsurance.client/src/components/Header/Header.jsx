@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '../../Services/api/authApi';
+import { useQueryClient } from "@tanstack/react-query";
 
 
 export default function Header() {
@@ -20,9 +21,12 @@ export default function Header() {
     const cancelRef = React.useRef();
     const navigate = useNavigate();
     const toast = useToast();
+    const queryClient = useQueryClient();
+    const auth = queryClient.getQueryData('auth');
 
     const handleLogout = () => {
-        Logout();
+        console.log("logout Ok");
+        Logout(queryClient);
         navigate("/SignUp");
         toast({
             title: 'LogOut Message',
@@ -94,13 +98,18 @@ export default function Header() {
                         >
                             Sign in
                             </Link>
-                            {/*<Button colorScheme='red' onClick={onOpen}>*/}
-                            {/*    Delete Customer*/}
-                            {/*</Button>*/}
-                            <AvatarGroup spacing='1rem' onClick={onOpen}>
-                               {/* <Avatar bg='red.500' icon={<AiOutlineUser fontSize='1.5rem' />} />*/}
-                                <Avatar bg='gray.500' size='md' />
-                            </AvatarGroup>
+                            {auth?.isLoggedIn ? (
+                                <AvatarGroup spacing='1rem' onClick={onOpen}>
+                                    <Avatar bg='gray.500' size='md' />
+                                </AvatarGroup>
+                            ) : (
+                                    <Link
+                                        to="Login"
+                                        className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                                    >
+                                        Log in
+                                    </Link>
+                            )}
 
                             <AlertDialog
                                 isOpen={isOpen}

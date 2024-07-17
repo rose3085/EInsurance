@@ -15,7 +15,7 @@ const Login = () =>
     const { mutate } = useLogin();
     const submitUserData = async (data) => {
         mutate(data);
-        navigate('/khalti', { state: { minCover } });
+       /* navigate('/khalti', { state: { minCover } });*/
     };
 
     
