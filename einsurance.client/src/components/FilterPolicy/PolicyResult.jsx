@@ -94,7 +94,7 @@ const PolicyResult = () => {
     
       
                       {/* {responseValue.premiumRate } */}
-                        <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div>
+                        {/* <div className="minCover">Minimum Cover: Rs {responseValue.minCover} </div> */}
                         </div>
 
                         <div className="moreDetail">
