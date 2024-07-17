@@ -105,7 +105,7 @@ export default function Header() {
                             ) : (
                                     <Link
                                         to="Login"
-                                        className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                                        className="text-gray-800 hover:bg-gray-50 border-gray-400 border-2 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                                     >
                                         Log in
                                     </Link>
