@@ -4,16 +4,21 @@ import { Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { useResponse } from '../../context/ResponseContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 const PaymentButton = () => {
     const location = useLocation();
-    const { minCover } = location.state || {};
+    const { minCover, policyName } = location.state || {};
     const [loading, setLoading] = useState(false);
     const { responseData } = useResponse();
     const [error, setError] = useState('');
     const { register, handleSubmit, setValue } = useForm();
     const navigate = useNavigate();
     const [policyData, setPolicyData] = useState(null);
+    var userName = Cookies.get("userName");
+    console.log(policyName);
+
 
     const initiatePayment = async (registerData) => {
         setLoading(true);
@@ -46,22 +51,7 @@ const PaymentButton = () => {
         }
     };
 
-    //useEffect(() => {
-    //    if (responseData) {
-    //        const filteredPolicy = responseData.find(policy => policy.minCover === minCover);
-    //        if (filteredPolicy) {
-    //            setPolicyData(filteredPolicy);
-    //            setValue("amountInPaisa", filteredPolicy.minCover); // Set the value in the form
-    //        } else {
-    //            // Handle case where policy data with the given minCover is not found
-    //            setError('Policy not found!');
-    //        }
-    //    }
-    //}, [minCover, responseData, setValue]);
-
-    //if (!policyData) {
-    //    return <div>Policy not found!</div>;
-    //}
+   
 
     return (
         <>
@@ -79,7 +69,7 @@ const PaymentButton = () => {
                     <form onSubmit={handleSubmit(initiatePayment)}>
                         <div className='h-20 w-full bg-[#5D2E8C] rounded-t-md'>
                             <div className='pt-8 pl-2 text-lg font-medium font-sans text-white'>
-                                Fill Up User Details
+                                Verify The Details
                             </div>
                         </div>
                         <div className="px-3 py-6">
@@ -88,10 +78,26 @@ const PaymentButton = () => {
                                     <div className="sm:col-span-full">
                                         <label htmlFor="customer-name" className="block text-base font-medium leading-3 text-gray-900 font-sans">User Name</label>
                                         <div className="mt-2">
-                                            <input type="text" name="customer-name" id="customer-name" autoComplete="given-name" className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                            <input type="text" name="customer-name" id="customer-name"
+                                                defaultValue={userName} // Populate with minCover value
+                                                readOnly
+                                                // autoComplete="given-name"
+                                                className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                                 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none focus:ring-[#0065ff] sm:text-sm sm:leading-6" {...register("customerName")} />
                                         </div>
                                     </div>
+                                    <div className="sm:col-span-full">
+                                        <label htmlFor="customer-name" className="block text-base font-medium leading-3 text-gray-900 font-sans">Policy Name</label>
+                                        <div className="mt-2">
+                                            <input type="text" name="policy-name" id="policy-name"
+                                                defaultValue={policyName} // Populate with minCover value
+                                                readOnly
+                                                // autoComplete="given-name"
+                                                className="block px-2 text-base font-sans w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                                ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:outline-none focus:ring-[#0065ff] sm:text-sm sm:leading-6" {...register("PolicyName")} />
+                                        </div>
+                                    </div>
+
                                     <div className="sm:col-span-full">
                                         <label htmlFor="amount-in-paisa" className="block text-base font-medium leading-3 text-gray-900 font-sans">Amount in Paisa</label>
                                         <div className="mt-2">

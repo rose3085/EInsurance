@@ -28,17 +28,17 @@ const PolicyResult = () => {
       
 
     }
-    const handleLoginPageChange = (minCover) => {
-        debugger;
+    const handleLoginPageChange = (minCover,policyName) => {
+        //debugger;
         const token = Cookies.get('token');
         console.log(token);
 
         if(token === undefined || token ===null)
         {
-            navigate("/Login", { state: { minCover } });
+            navigate("/Login", { state: { minCover} });
         }
         else{
-        navigate("/Khalti", { state: { minCover } });
+            navigate("/Khalti", { state: { minCover, policyName } });
         }
     };
    
@@ -93,7 +93,7 @@ const PolicyResult = () => {
 
                         <div className="moreDetail">
                             <button className="detailButtons" 
-                            onClick={() => handleLoginPageChange(responseValue.minCover)} >Buy </button>
+                                onClick={() => handleLoginPageChange(responseValue.minCover,responseValue.policyName)} >Buy </button>
                         </div>
                     <div className="moreDetail">
                             <button className="detailButton" onClick={() => handleNavigate(responseValue.policyName)}>Details </button>
