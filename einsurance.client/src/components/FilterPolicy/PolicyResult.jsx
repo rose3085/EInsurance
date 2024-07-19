@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 //import sunLife from "../Icons/SunlifeInsurance.jpg";
 import './PolicyResult.css';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useLocation} from 'react-router-dom';
 import arrow from '../Icons/rightArrow.png';
 import { useLocation } from 'react-router-dom';
 import { useResponse } from '../../context/ResponseContext';
@@ -42,7 +42,7 @@ const PolicyResult = () => {
 
         if(token === undefined || token ===null)
         {
-            navigate("/Login", { state: { premiumRate,policyName } });
+            navigate("/Login", { state: { from: location.pathname, premiumRate,policyName,  } });
         }
         else{
             navigate("/Khalti", { state: { premiumRate, policyName } });

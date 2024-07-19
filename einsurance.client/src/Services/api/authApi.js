@@ -24,7 +24,7 @@ export const loginAdmin = async (loginData) => {
 export const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {premiumRate, policyName } = location.state || {};
+  const { premiumRate, policyName } = location.state || {};
   const toast = useToast();
   const queryClient = useQueryClient();
 
@@ -43,7 +43,12 @@ export const useLogin = () => {
           duration: 4000,
           isClosable: true,
         });
+
+        const from = location.state?.from?.pathname || "/";
+        console.log(from);
+
         navigate("/khalti", { state: { premiumRate, policyName } });
+        //navigate("/");
       } else {
         toast({
           title: "Login Failed",
