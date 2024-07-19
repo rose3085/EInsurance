@@ -7,7 +7,7 @@ import './PolicyResult.css';
 import Cookies from 'js-cookie';
 import { useNavigate ,useLocation} from 'react-router-dom';
 import arrow from '../Icons/rightArrow.png';
-import { useLocation } from 'react-router-dom';
+//import { useLocation } from 'react-router-dom';
 import { useResponse } from '../../context/ResponseContext';
 
 

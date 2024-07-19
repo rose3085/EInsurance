@@ -24,7 +24,9 @@ export const loginAdmin = async (loginData) => {
 export const useLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { premiumRate, policyName } = location.state || {};
+    const { from, premiumRate, policyName } = location.state || {};
+    console.log(from);
+    console.log(typeof from);
   const toast = useToast();
   const queryClient = useQueryClient();
 
@@ -44,10 +46,22 @@ export const useLogin = () => {
           isClosable: true,
         });
 
-        const from = location.state?.from?.pathname || "/";
-        console.log(from);
+        //const from = location.state?.from?.pathname || "/";
+          //console.log(from);
+          console.log(from);
+          console.log(typeof from);
+          if (from === "/FilterResult") {
 
-        navigate("/khalti", { state: { premiumRate, policyName } });
+              navigate("/khalti", { state: { premiumRate, policyName } });
+          }
+          else {
+              navigate("/");
+
+          }
+         
+
+
+      
         //navigate("/");
       } else {
         toast({
