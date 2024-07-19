@@ -1,4 +1,5 @@
-﻿using EInsurance.Server.Data;
+﻿using System.Diagnostics.Metrics;
+using EInsurance.Server.Data;
 using EInsurance.Server.DTOs;
 using EInsurance.Server.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace EInsurance.Server.Repositories
         {
             try
             {
-                var factor = filters.CoverAmount / 1000;
+                float factor = (filters.CoverAmount) / (1000 * filters.Terms);
                 if (filters.MaturityBenefits == true)
                 {
                     var policiesList = await _context
@@ -76,7 +77,7 @@ namespace EInsurance.Server.Repositories
                             CompanyName = x.PolicyDetails.CompanyName.CompanyName,
                             PhoneNumber = x.PolicyDetails.CompanyName.PhoneNumber,
                             Website = x.PolicyDetails.CompanyName.Website,
-                            premiumRate =
+                            PremiumRate =
                                 (
                                     x.PolicyDetails.PremiumRate.Where(pr =>
                                         pr.StartAge <= filters.Age && pr.EndAge >= filters.Age
@@ -89,31 +90,32 @@ namespace EInsurance.Server.Repositories
 
                     var count1 = 0;
                     foreach (var policy in policiesList)
+                    // (float)Math.Round(originalNumber, 2);
                     {
                         count1 = count1 + 3;
-                        if (policy.premiumRate == 0)
+                        if (policy.PremiumRate == 0)
                         {
                             if (
                                 policy.MaturityBenefits == null
                                 || policy.MaturityBenefits.Contains("no maturity benefit")
                             )
                             {
-                                policy.premiumRate = (60 + count1) * factor;
+                                policy.PremiumRate = (float)Math.Round(((60 + count1) * factor), 2);
                             }
 
-                            policy.premiumRate = (100 + count1) * factor;
+                            policy.PremiumRate = (float)Math.Round(((100 + count1) * factor), 2);
                         }
                         if (policy.PaymentMode == "Monthly")
                         {
-                            policy.premiumRate = policy.premiumRate / 12;
+                            policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 12), 2);
                         }
                         if (policy.PaymentMode == "Quaterly")
                         {
-                            policy.premiumRate = policy.premiumRate / 4;
+                            policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 4), 2);
                         }
                         if (policy.PaymentMode == "Half Yearly")
                         {
-                            policy.premiumRate = policy.premiumRate / 2;
+                            policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 2), 2);
                         }
                     }
 
@@ -173,7 +175,7 @@ namespace EInsurance.Server.Repositories
                         CompanyName = x.PolicyDetails.CompanyName.CompanyName,
                         PhoneNumber = x.PolicyDetails.CompanyName.PhoneNumber,
                         Website = x.PolicyDetails.CompanyName.Website,
-                        premiumRate =
+                        PremiumRate =
                             (
                                 x.PolicyDetails.PremiumRate.Where(pr =>
                                     pr.StartAge <= filters.Age && pr.EndAge >= filters.Age
@@ -187,29 +189,29 @@ namespace EInsurance.Server.Repositories
                 foreach (var policy in policies)
                 {
                     count = count + 3;
-                    if (policy.premiumRate == 0)
+                    if (policy.PremiumRate == 0)
                     {
                         if (
                             policy.MaturityBenefits == null
                             || policy.MaturityBenefits.Contains("no maturity benefit")
                         )
                         {
-                            policy.premiumRate = (60 + count) * factor;
+                            policy.PremiumRate = (float)Math.Round(((60 + count) * factor), 2);
                         }
 
-                        policy.premiumRate = (100 + count) * factor;
+                        policy.PremiumRate = (float)Math.Round(((100 + count) * factor), 2);
                     }
                     if (policy.PaymentMode == "Monthly")
                     {
-                        policy.premiumRate = policy.premiumRate / 12;
+                        policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 12), 2);
                     }
                     if (policy.PaymentMode == "Quaterly")
                     {
-                        policy.premiumRate = policy.premiumRate / 4;
+                        policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 4), 2);
                     }
                     if (policy.PaymentMode == "Half Yearly")
                     {
-                        policy.premiumRate = policy.premiumRate / 2;
+                        policy.PremiumRate = (float)Math.Round((policy.PremiumRate / 2), 2);
                     }
                 }
                 return policies;

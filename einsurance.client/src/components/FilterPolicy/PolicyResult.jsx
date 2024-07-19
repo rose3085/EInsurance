@@ -38,6 +38,7 @@ const PolicyResult = () => {
         const token = Cookies.get('token');
         console.log(token);
         Cookies.set("policyId", policyId);
+        premiumRate = premiumRate * 100;
 
 
         if(token === undefined || token ===null)

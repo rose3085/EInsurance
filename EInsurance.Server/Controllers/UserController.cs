@@ -17,8 +17,8 @@ namespace EInsurance.Server.Controllers
         }
 
         [HttpGet]
-        [Route("/Policies")]
-        public async Task<IActionResult> GetPolicies()
+        [Route("/me")]
+        public async Task<IActionResult> GetUser()
         {
             string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null)
