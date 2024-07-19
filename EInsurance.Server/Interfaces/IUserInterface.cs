@@ -21,6 +21,6 @@ namespace EInsurance.Server.Interfaces
         Task<UserManagerResponse> AddPayment(string userId, int policyId, double amount);
 
         // Task<ICollection<UserPaymentModel> GetUserPolicies(string userId);
-        Task<ICollection<UserPaymentModel>> GetUserPolicies(string userId);
+        Task<ICollection<UserDetailDTO>> GetUserPolicies(string userId);
     }
 }

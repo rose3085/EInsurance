@@ -88,11 +88,18 @@ namespace EInsurance.Server.Repositories
             return users;
         }
 
-        public async Task<ICollection<UserPaymentModel>> GetUserPolicies(string userId)
+        public async Task<ICollection<UserDetailDTO>> GetUserPolicies(string userId)
         {
             var result = await _context
                 .UserPayments.Include(x => x.PolicyDetail)
+                .Include(x => x.User)
                 .Where(x => x.User.Id == userId)
+                .Select(x => new UserDetailDTO
+                {
+                    PaidAmount = x.PaidAmount,
+                    PurchasedDate = x.PurchasedDate,
+                    PolicyName = x.PolicyDetail.PolicyName
+                })
                 .ToListAsync();
             return result;
         }

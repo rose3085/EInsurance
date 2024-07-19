@@ -7,6 +7,6 @@
         public string TransactionId { get; set; }
         public string TotalAmount { get; set; }
 
-        public int PolicyId { get; set; }
+        //public int PolicyId { get; set; }
     }
 }

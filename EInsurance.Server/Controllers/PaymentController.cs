@@ -68,7 +68,7 @@ namespace EInsurance.Server.Controllers
             }
             double amount = double.Parse(model.TotalAmount);
             amount = amount / 100;
-            var result = await _user.AddPayment(userId, model.PolicyId, amount);
+            var result = await _user.AddPayment(userId, model.ProductId, amount);
 
             return Ok(result);
         }

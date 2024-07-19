@@ -93,7 +93,7 @@ const ViewDetail = () => {
                                 <tr>
 
                                     <td>Premium Rate</td>
-                                    <td>{policyData.premiumRate / policyData.policyTerm}</td>
+                                    <td>{policyData.premiumRate }</td>
 
                                 </tr>
 

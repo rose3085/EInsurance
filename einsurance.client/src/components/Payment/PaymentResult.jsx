@@ -20,6 +20,10 @@ const PaymentResult = () => {
 
     const token = Cookies.get('token');
     const productId = Number(Cookies.get('policyId'));
+    const userName = Cookies.get('userName');
+    console.log(productId);
+    var currentDate = new Date();
+    currentDate = currentDate.toISOString().split('T')[0];
 
     //const token = Cookies.get('');
 
@@ -79,6 +83,12 @@ const PaymentResult = () => {
                                     {status}
                                 </div>
                             </div>
+                            <div className="sm:col-span-3">
+                                <label htmlFor="Purchase Order Name" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Purchase Made By:</label>
+                                <div className="mt-2 text-lg font-bold">
+                                    {userName}
+                                </div>
+                            </div>
 
                             <div className="sm:col-span-3">
                                 <label htmlFor="Transaction ID" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Transaction ID:</label>
@@ -87,9 +97,9 @@ const PaymentResult = () => {
                                 </div>
                             </div>
                             <div className="sm:col-span-3">
-                                <label htmlFor="Amount" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Amount:</label>
+                                <label htmlFor="Amount" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Purchased Date:</label>
                                 <div className="mt-2 text-lg font-bold">
-                                    {amount}
+                                    {currentDate}
                                 </div>
                             </div>
                             <div className="sm:col-span-3">
@@ -104,12 +114,7 @@ const PaymentResult = () => {
                                     {purchaseOrderId}
                                 </div>
                             </div>
-                            <div className="sm:col-span-3">
-                                <label htmlFor="Purchase Order Name" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Purchase Order Name:</label>
-                                <div className="mt-2 text-lg font-bold">
-                                    {purchaseOrderName}
-                                </div>
-                            </div>
+                            
                             <div className="sm:col-span-3">
                                 <label htmlFor="Total Amount" className=" block text-base font-medium leading-3 text-gray-500 font-sans">Total Amount:</label>
                                 <div className="mt-2 text-lg font-bold">
