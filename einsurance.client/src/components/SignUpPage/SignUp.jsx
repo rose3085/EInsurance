@@ -1,15 +1,14 @@
-import {useState,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './SignUp.css';
 import hand from '../Icons/familyInsurance.png';
 import logo from '../Icons/EInsuranceLogo.png';
 import cancel from '../Icons/CancelButton.png';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import right from '../Icons/right.png';
 import { useForm } from 'react-hook-form';
 import { useSignUp } from '../../Services/api/authApi';
 
-const SignUp = () =>
-{
+const SignUp = () => {
 
     const [name, setName] = useState('');
     const { register, handleSubmit } = useForm();
@@ -24,112 +23,112 @@ const SignUp = () =>
         mutate(data);
     };
     const navigate = useNavigate();
-    const handlePageChange = (event) =>
-    {
+    const handlePageChange = (event) => {
         event.preventDefault();
         navigate("/EnterEmail");
     }
-    const handleLoginPageChange = () =>
-    {
+    const handleLoginPageChange = () => {
         navigate("/Login");
     }
 
-    const handleCancel = () =>
-    {
+    const handleCancel = () => {
         navigate("/");
     }
 
 
-return (
-    <section className="signUpMain">
-        
-        <div className="mainComponent">
+    return (
+        <section className="signUpMain">
 
-        <div className="headerComponent">
+            <div className="mainComponent">
+
+                <div className="headerComponent">
                     {/* <div className="logo">
                     <img src={logo}  alt="" height='70px' id='checked'/> 
                     </div> */}
                     <div className="cancelsButton" onClick={handleCancel}>
-                    <img src={cancel}  alt="" height='25px' id='checked'/> 
+                        <img src={cancel} alt="" height='25px' id='checked' />
                     </div>
-                   
+
                 </div>
                 <div className="signUpComponents">
-                
-                <div className="signUpForm">
-                <p className="welcome">Welcome </p>
-                <p className="createAccountInfo">Create an account</p>
-                    <form className="signUp" onSubmit={handleSubmit(SignUpRegisterAdmin)}>
-                        <div className="name">
-                            <label className="mr-2">UserName</label>
-                        <input className="enterFirstName" type="text" 
-                                placeholder="Enter your Name" {...register("name", { required: "name is requried" })}/>
-                    
-                </div>
-                <div className="name">
-                            <label className="mr-5">Email</label>
-                        <input className="enterLastName ml-7" type="email" 
-                                placeholder="Enter your email" {...register("email", { required: "Email is requried" })}/>
-                    
-                        </div>
-                        <div className="name">
-                            <label className="mr-4">Password</label>
+
+                    <div className="signUpForm">
+                        <p className="welcome">Welcome </p>
+                        <p className="createAccountInfo">Create an account</p>
+                        <form className="signUp" onSubmit={handleSubmit(SignUpRegisterAdmin)}>
+                            <div className="name">
+                                <label className="text-[18px] mr-2">UserName</label>
+                                
+
+                                <input className="enterFirstName" type="text"
+                                        placeholder="Enter your Name" {...register("name", { required: "name is requried" })} />
+                               
+
+                            </div>
+                            <div className="name">
+                                <label className="mr-5 text-[18px]">Email</label>
+                                <input className="enterLastName ml-7" type="email"
+                                    placeholder="Enter your email" {...register("email", { required: "Email is requried" })} />
+
+                            </div>
+                            <div className="name">
+                                <label className="mr-4 text-[18px]">Password</label>
                                 <input className="enterLastName" type="password"
-                                placeholder="6 characters| 1 Capital |1 symbol"  {...register("password", {
-                                    required: "Password is requried.",
-                                })} />
-                            
-                        </div>
-                        <div className="name">
-                            <label className="mr-10 ml-16">Confirm password:</label>
-                                <input className="enterLastName ml-24" type="password"
-                                placeholder="6 characters| 1 Capital |1 symbol" {...register("confirmPassword", {
-                                    required: "confirmPassword is requried.",
-                                })} />
-                            
-                        </div>
-                        <div className="name">
-                            <label className="mr-6">Contact</label>
-                            <input className="enterLastName" type="number"
-                                placeholder="Enter your Contact Number"  {...register("contactInformation")} />
+                                    placeholder="6 characters| 1 Capital |1 symbol"  {...register("password", {
+                                        required: "Password is requried.",
+                                    })} />
 
-                        </div>
-                        
-               
-                <div className="nextPage">
-                    {/* <button className="nextButton"onClick={handlePageChange}>Next</button> */}
-                    
-                            <div><button className="right2" > {/*onClick={handlePageChange}*/}
-                   {/* <img src={right}  alt="" height='20px' id='checked'/> */}
+                            </div>
+                            <div className="name flex">
+                                <label className="w-[105px] text-[18px] mr-1">Confirm Password</label>
+                                <input className="enterLastName mr-3 " type="password"
+                                    placeholder="6 characters| 1 Capital |1 symbol" {...register("confirmPassword", {
+                                        required: "confirmPassword is requried.",
+                                    })} />
 
-                    </button></div>
-                        </div>
-                        <div className="submitButton">
-                            <button className="button" type="submit">Continue</button>
-                        </div>
-            </form>
+                            </div>
+                            <div className="name">
+                                <label className="mr-8 text-[18px]">Contact</label>
+                                <input className="enterLastName" type="number"
+                                    placeholder="Enter your Contact Number"  {...register("contactInformation")} />
 
-            
-            <div className="toggleSignUp">
-                <div className="lines mt-4 ml-24"> </div>
-                    <p className="alreadyAccount"> Already have an account?
-                    <div className="navLogin" onClick={handleLoginPageChange}>Login</div>
-                    </p>
-                </div>
-            
-            </div>
-            <div className="signUpLogo">
-                    <div className="flex justify-center mt-32">
-                        <img src='https://cdn-icons-png.flaticon.com/128/10184/10184706.png'  alt="" height='800' id='checked'/> 
-                    </div> 
-                    <p className="quote">
-                    Your best investment is in yourself.
-                    </p>
+                            </div>
+
+
+                            <div className="nextPage">
+                                {/* <button className="nextButton"onClick={handlePageChange}>Next</button> */}
+
+                                <div><button className="right2" > {/*onClick={handlePageChange}*/}
+                                    {/* <img src={right}  alt="" height='20px' id='checked'/> */}
+
+                                </button></div>
+                            </div>
+                            <div className="submitButton">
+                                <button className="button" type="submit">Continue</button>
+                            </div>
+                        </form>
+
+
+                        <div className="toggleSignUp">
+                            <div className="lines mt-4 ml-[62px]"> </div>
+                            <p className="alreadyAccount"> Already have an account?
+                                <div className="navLogin" onClick={handleLoginPageChange}>Login</div>
+                            </p>
+                        </div>
+
                     </div>
-        
-        </div> </div>
-    </section>
-);
+                    <div className="signUpLogo">
+                        <div className="flex justify-center mt-32">
+                            <img src='https://cdn-icons-png.flaticon.com/128/10184/10184706.png' alt="" height='800' id='checked' />
+                        </div>
+                        <p className="quote">
+                            Your best investment is in yourself.
+                        </p>
+                    </div>
+
+                </div> </div>
+        </section>
+    );
 
 }
 export default SignUp;

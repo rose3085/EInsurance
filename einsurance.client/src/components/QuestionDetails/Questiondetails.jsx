@@ -26,6 +26,7 @@ function Questiondetails() {
 
     const requestBody = {
         filter: "some_value",
+        userName,
         policyType,
         terms,
         age,

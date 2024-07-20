@@ -20,6 +20,7 @@ const PaymentButton = () => {
     console.log(policyName);
 
 
+
     const initiatePayment = async (registerData) => {
         setLoading(true);
         setError('');

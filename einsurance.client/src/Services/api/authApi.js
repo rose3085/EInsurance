@@ -34,7 +34,7 @@ export const useLogin = () => {
     mutationFn: loginAdmin,
     onSuccess: (data) => {
       if (data.isSuccess && data.message) {
-        debugger;
+        /*debugger;*/
         Cookies.set("token", data.message);
         Cookies.set("email", data.user?.email || "");
         queryClient.setQueryData("auth", { isLoggedIn: true, user: data.user });

@@ -18,6 +18,7 @@ const PolicyResult = () => {
     
     const location = useLocation();
     const formData = location.state?.formData || {};
+    const [sortOrder, setSortOrder] = useState(null);
    
     
 
@@ -34,7 +35,7 @@ const PolicyResult = () => {
    
 
     const handleLoginPageChange = (premiumRate, policyName, policyId) => {
-        debugger;
+        /*debugger;*/
         const token = Cookies.get('token');
         console.log(token);
         Cookies.set("policyId", policyId);
@@ -49,6 +50,27 @@ const PolicyResult = () => {
             navigate("/Khalti", { state: { premiumRate, policyName } });
         }
     };
+    const handleSort = (order) => {
+        setSortOrder(order);
+    };
+
+    const sortedPolicies = () => {
+        if (!responseData) {
+            return [];
+        }
+
+        const sorted = [...responseData];
+
+        if (sortOrder === "lowToHigh") {
+            sorted.sort((firstData, lastData) => firstData.premiumRate - lastData.premiumRate);
+        } else if (sortOrder === "highToLow") {
+            sorted.sort((firstData, lastData) => lastData.premiumRate - firstData.premiumRate);
+        }
+
+        return sorted;
+    };
+
+    const sortedPolicyList = sortedPolicies();
    
 
     const companyLogo = 
@@ -65,8 +87,13 @@ const PolicyResult = () => {
 
     return (
         <section className="policyFilterResultMain">
+            <div className="sort-buttons ml-[210px] gap-4">
+                <div className="text-xl font-semibold">Sort:</div>
+                <button onClick={() => handleSort('lowToHigh')} className="inline-flex mr-4 text-white bg-[#008a8a] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg"> Low to High</button>
+                <button onClick={() => handleSort('highToLow')} className="inline-flex text-white bg-[#0065ff]/[0.7] border-0 py-2 px-6 focus:outline-none hover:bg-[#0EAA42] rounded text-lg"> High to Low</button>
+            </div>
             <div className="filterWrap">
-                {responseData ? responseData.map((responseValue, index) => { 
+                {sortedPolicyList ? sortedPolicyList.map((responseValue, index) => { 
                    
                    /* const id = responseValue.id || generateRandomId();*/
                 return(
